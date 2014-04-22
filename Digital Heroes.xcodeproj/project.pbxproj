@@ -1,0 +1,490 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5373979E19064F3B0024B7E0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5373979D19064F3B0024B7E0 /* Foundation.framework */; };
+		537397A019064F3B0024B7E0 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5373979F19064F3B0024B7E0 /* CoreGraphics.framework */; };
+		537397A219064F3B0024B7E0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 537397A119064F3B0024B7E0 /* UIKit.framework */; };
+		537397A819064F3B0024B7E0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 537397A619064F3B0024B7E0 /* InfoPlist.strings */; };
+		537397AA19064F3B0024B7E0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 537397A919064F3B0024B7E0 /* main.m */; };
+		537397AE19064F3B0024B7E0 /* X2RAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 537397AD19064F3B0024B7E0 /* X2RAppDelegate.m */; };
+		537397B119064F3B0024B7E0 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 537397AF19064F3B0024B7E0 /* Main_iPhone.storyboard */; };
+		537397B419064F3B0024B7E0 /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 537397B219064F3B0024B7E0 /* Main_iPad.storyboard */; };
+		537397B719064F3B0024B7E0 /* X2RViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 537397B619064F3B0024B7E0 /* X2RViewController.m */; };
+		537397B919064F3B0024B7E0 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 537397B819064F3B0024B7E0 /* Images.xcassets */; };
+		537397C019064F3B0024B7E0 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 537397BF19064F3B0024B7E0 /* XCTest.framework */; };
+		537397C119064F3B0024B7E0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5373979D19064F3B0024B7E0 /* Foundation.framework */; };
+		537397C219064F3B0024B7E0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 537397A119064F3B0024B7E0 /* UIKit.framework */; };
+		537397CA19064F3B0024B7E0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 537397C819064F3B0024B7E0 /* InfoPlist.strings */; };
+		537397CC19064F3B0024B7E0 /* Digital_HeroesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 537397CB19064F3B0024B7E0 /* Digital_HeroesTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		537397C319064F3B0024B7E0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5373979219064F3B0024B7E0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5373979919064F3B0024B7E0;
+			remoteInfo = "Digital Heroes";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		5373979A19064F3B0024B7E0 /* Digital Heroes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Digital Heroes.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5373979D19064F3B0024B7E0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		5373979F19064F3B0024B7E0 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		537397A119064F3B0024B7E0 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		537397A519064F3B0024B7E0 /* Digital Heroes-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Digital Heroes-Info.plist"; sourceTree = "<group>"; };
+		537397A719064F3B0024B7E0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		537397A919064F3B0024B7E0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		537397AB19064F3B0024B7E0 /* Digital Heroes-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Digital Heroes-Prefix.pch"; sourceTree = "<group>"; };
+		537397AC19064F3B0024B7E0 /* X2RAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = X2RAppDelegate.h; sourceTree = "<group>"; };
+		537397AD19064F3B0024B7E0 /* X2RAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = X2RAppDelegate.m; sourceTree = "<group>"; };
+		537397B019064F3B0024B7E0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
+		537397B319064F3B0024B7E0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
+		537397B519064F3B0024B7E0 /* X2RViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = X2RViewController.h; sourceTree = "<group>"; };
+		537397B619064F3B0024B7E0 /* X2RViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = X2RViewController.m; sourceTree = "<group>"; };
+		537397B819064F3B0024B7E0 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		537397BE19064F3B0024B7E0 /* Digital HeroesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Digital HeroesTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		537397BF19064F3B0024B7E0 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		537397C719064F3B0024B7E0 /* Digital HeroesTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Digital HeroesTests-Info.plist"; sourceTree = "<group>"; };
+		537397C919064F3B0024B7E0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		537397CB19064F3B0024B7E0 /* Digital_HeroesTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Digital_HeroesTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5373979719064F3B0024B7E0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				537397A019064F3B0024B7E0 /* CoreGraphics.framework in Frameworks */,
+				537397A219064F3B0024B7E0 /* UIKit.framework in Frameworks */,
+				5373979E19064F3B0024B7E0 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		537397BB19064F3B0024B7E0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				537397C019064F3B0024B7E0 /* XCTest.framework in Frameworks */,
+				537397C219064F3B0024B7E0 /* UIKit.framework in Frameworks */,
+				537397C119064F3B0024B7E0 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5373979119064F3B0024B7E0 = {
+			isa = PBXGroup;
+			children = (
+				537397A319064F3B0024B7E0 /* Digital Heroes */,
+				537397C519064F3B0024B7E0 /* Digital HeroesTests */,
+				5373979C19064F3B0024B7E0 /* Frameworks */,
+				5373979B19064F3B0024B7E0 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		5373979B19064F3B0024B7E0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5373979A19064F3B0024B7E0 /* Digital Heroes.app */,
+				537397BE19064F3B0024B7E0 /* Digital HeroesTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5373979C19064F3B0024B7E0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5373979D19064F3B0024B7E0 /* Foundation.framework */,
+				5373979F19064F3B0024B7E0 /* CoreGraphics.framework */,
+				537397A119064F3B0024B7E0 /* UIKit.framework */,
+				537397BF19064F3B0024B7E0 /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		537397A319064F3B0024B7E0 /* Digital Heroes */ = {
+			isa = PBXGroup;
+			children = (
+				537397AC19064F3B0024B7E0 /* X2RAppDelegate.h */,
+				537397AD19064F3B0024B7E0 /* X2RAppDelegate.m */,
+				537397AF19064F3B0024B7E0 /* Main_iPhone.storyboard */,
+				537397B219064F3B0024B7E0 /* Main_iPad.storyboard */,
+				537397B519064F3B0024B7E0 /* X2RViewController.h */,
+				537397B619064F3B0024B7E0 /* X2RViewController.m */,
+				537397B819064F3B0024B7E0 /* Images.xcassets */,
+				537397A419064F3B0024B7E0 /* Supporting Files */,
+			);
+			path = "Digital Heroes";
+			sourceTree = "<group>";
+		};
+		537397A419064F3B0024B7E0 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				537397A519064F3B0024B7E0 /* Digital Heroes-Info.plist */,
+				537397A619064F3B0024B7E0 /* InfoPlist.strings */,
+				537397A919064F3B0024B7E0 /* main.m */,
+				537397AB19064F3B0024B7E0 /* Digital Heroes-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		537397C519064F3B0024B7E0 /* Digital HeroesTests */ = {
+			isa = PBXGroup;
+			children = (
+				537397CB19064F3B0024B7E0 /* Digital_HeroesTests.m */,
+				537397C619064F3B0024B7E0 /* Supporting Files */,
+			);
+			path = "Digital HeroesTests";
+			sourceTree = "<group>";
+		};
+		537397C619064F3B0024B7E0 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				537397C719064F3B0024B7E0 /* Digital HeroesTests-Info.plist */,
+				537397C819064F3B0024B7E0 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5373979919064F3B0024B7E0 /* Digital Heroes */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 537397CF19064F3B0024B7E0 /* Build configuration list for PBXNativeTarget "Digital Heroes" */;
+			buildPhases = (
+				5373979619064F3B0024B7E0 /* Sources */,
+				5373979719064F3B0024B7E0 /* Frameworks */,
+				5373979819064F3B0024B7E0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Digital Heroes";
+			productName = "Digital Heroes";
+			productReference = 5373979A19064F3B0024B7E0 /* Digital Heroes.app */;
+			productType = "com.apple.product-type.application";
+		};
+		537397BD19064F3B0024B7E0 /* Digital HeroesTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 537397D219064F3B0024B7E0 /* Build configuration list for PBXNativeTarget "Digital HeroesTests" */;
+			buildPhases = (
+				537397BA19064F3B0024B7E0 /* Sources */,
+				537397BB19064F3B0024B7E0 /* Frameworks */,
+				537397BC19064F3B0024B7E0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				537397C419064F3B0024B7E0 /* PBXTargetDependency */,
+			);
+			name = "Digital HeroesTests";
+			productName = "Digital HeroesTests";
+			productReference = 537397BE19064F3B0024B7E0 /* Digital HeroesTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5373979219064F3B0024B7E0 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = X2R;
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = josex2r;
+				TargetAttributes = {
+					537397BD19064F3B0024B7E0 = {
+						TestTargetID = 5373979919064F3B0024B7E0;
+					};
+				};
+			};
+			buildConfigurationList = 5373979519064F3B0024B7E0 /* Build configuration list for PBXProject "Digital Heroes" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 5373979119064F3B0024B7E0;
+			productRefGroup = 5373979B19064F3B0024B7E0 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5373979919064F3B0024B7E0 /* Digital Heroes */,
+				537397BD19064F3B0024B7E0 /* Digital HeroesTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5373979819064F3B0024B7E0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				537397B419064F3B0024B7E0 /* Main_iPad.storyboard in Resources */,
+				537397B919064F3B0024B7E0 /* Images.xcassets in Resources */,
+				537397B119064F3B0024B7E0 /* Main_iPhone.storyboard in Resources */,
+				537397A819064F3B0024B7E0 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		537397BC19064F3B0024B7E0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				537397CA19064F3B0024B7E0 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5373979619064F3B0024B7E0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				537397AA19064F3B0024B7E0 /* main.m in Sources */,
+				537397B719064F3B0024B7E0 /* X2RViewController.m in Sources */,
+				537397AE19064F3B0024B7E0 /* X2RAppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		537397BA19064F3B0024B7E0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				537397CC19064F3B0024B7E0 /* Digital_HeroesTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		537397C419064F3B0024B7E0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5373979919064F3B0024B7E0 /* Digital Heroes */;
+			targetProxy = 537397C319064F3B0024B7E0 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		537397A619064F3B0024B7E0 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				537397A719064F3B0024B7E0 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		537397AF19064F3B0024B7E0 /* Main_iPhone.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				537397B019064F3B0024B7E0 /* Base */,
+			);
+			name = Main_iPhone.storyboard;
+			sourceTree = "<group>";
+		};
+		537397B219064F3B0024B7E0 /* Main_iPad.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				537397B319064F3B0024B7E0 /* Base */,
+			);
+			name = Main_iPad.storyboard;
+			sourceTree = "<group>";
+		};
+		537397C819064F3B0024B7E0 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				537397C919064F3B0024B7E0 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		537397CD19064F3B0024B7E0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		537397CE19064F3B0024B7E0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		537397D019064F3B0024B7E0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Digital Heroes/Digital Heroes-Prefix.pch";
+				INFOPLIST_FILE = "Digital Heroes/Digital Heroes-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		537397D119064F3B0024B7E0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Digital Heroes/Digital Heroes-Prefix.pch";
+				INFOPLIST_FILE = "Digital Heroes/Digital Heroes-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		537397D319064F3B0024B7E0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Digital Heroes.app/Digital Heroes";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Digital Heroes/Digital Heroes-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Digital HeroesTests/Digital HeroesTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		537397D419064F3B0024B7E0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Digital Heroes.app/Digital Heroes";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Digital Heroes/Digital Heroes-Prefix.pch";
+				INFOPLIST_FILE = "Digital HeroesTests/Digital HeroesTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5373979519064F3B0024B7E0 /* Build configuration list for PBXProject "Digital Heroes" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				537397CD19064F3B0024B7E0 /* Debug */,
+				537397CE19064F3B0024B7E0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		537397CF19064F3B0024B7E0 /* Build configuration list for PBXNativeTarget "Digital Heroes" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				537397D019064F3B0024B7E0 /* Debug */,
+				537397D119064F3B0024B7E0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		537397D219064F3B0024B7E0 /* Build configuration list for PBXNativeTarget "Digital HeroesTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				537397D319064F3B0024B7E0 /* Debug */,
+				537397D419064F3B0024B7E0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 5373979219064F3B0024B7E0 /* Project object */;
+}
