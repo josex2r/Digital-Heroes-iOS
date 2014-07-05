@@ -109,10 +109,13 @@
                 dispatch_queue_t concurrentQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
                 dispatch_async(concurrentQueue, ^{
                     imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:post.imageLink]];
+                    UIImage *image = [UIImage imageWithData:imageData];
+                    //Resize the image
+                    //post.image = [self scaleImage:image toSize:CGSizeMake(800.0, 400.0)];
+                    post.image = image;
                     
+                    //Put image into the view
                     dispatch_async(dispatch_get_main_queue(), ^{
-                        
-                        post.image = [UIImage imageWithData:imageData];
                         postImage.image = post.image;
                         [postLoading stopAnimating];
                         [postLoading setHidden:YES];
@@ -136,6 +139,8 @@
 }
 
 -(void) loadFeed:(BOOL)cleanTable{
+    NSArray *cachedPosts = [blog getPostsFromFilter:blog.activeFilter andPage:blog.currentPage];
+    
     if( cleanTable ){
         self.navigationItem.title = blog.activeFilter.name;
         [self.postList removeAllObjects];
@@ -144,24 +149,35 @@
     
     blog.isLoading = YES;
     
-    dispatch_queue_t concurrentQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0);
-    dispatch_async(concurrentQueue, ^{
-        NSString *finalFeedUrl = [NSString stringWithFormat:@"%@?paged=%d", blog.activeFilter.feedUrl, blog.currentPage];
-        NSURL *allPostFeedUrl = [NSURL URLWithString:finalFeedUrl];
+    if( cachedPosts!=nil ){
         
-        X2RXMLPullParser *parser = [[X2RXMLPullParser alloc] initWithContentsOfURL:allPostFeedUrl andCompletionBlock:^(NSMutableArray *posts) {
-            //Load post into data source
-            [self.postList addObjectsFromArray:posts];
-            //Reload table
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [self.tableView reloadData];
-            });
+        [self.postList addObjectsFromArray:cachedPosts];
+        [self.tableView reloadData];
+        blog.isLoading = NO;
+        
+    }else{
+    
+        dispatch_queue_t concurrentQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0);
+        dispatch_async(concurrentQueue, ^{
+            NSString *finalFeedUrl = [NSString stringWithFormat:@"%@?paged=%d", blog.activeFilter.feedUrl, blog.currentPage];
+            NSURL *allPostFeedUrl = [NSURL URLWithString:finalFeedUrl];
+        
+            X2RXMLPullParser *parser = [[X2RXMLPullParser alloc] initWithContentsOfURL:allPostFeedUrl andCompletionBlock:^(NSMutableArray *posts) {
+                [blog pushPosts:posts intoFilter:blog.activeFilter andPage:blog.currentPage];
+                //Load post into data source
+                [self.postList addObjectsFromArray:posts];
+                //Reload table
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self.tableView reloadData];
+                });
             
-            blog.isLoading = NO;
-        }];
+                blog.isLoading = NO;
+            }];
+            
+            [parser parse];
+        });
         
-        [parser parse];
-    });
+    }
 }
 
 -(void)navItemPressed:(id)button{
@@ -183,6 +199,38 @@
     //Change circle color
     UIPageControl *control = pageController.pageControl;
     [control setCurrentPage:viewToSwapIndex];
+}
+
+-(UIImage*) scaleImage:(UIImage*)image toSize:(CGSize)newSize{
+    float w = newSize.width;
+    float h = newSize.height;
+    
+    UIGraphicsBeginImageContext(newSize);
+    CGRect rect = CGRectMake(0, 0, w, h);
+    
+    double ratioX = image.size.width / w;
+    double ratioY = image.size.height / h;
+    double ratio = MAX(ratioX, ratioY);
+    
+    w = image.size.width / ratio;
+    h = image.size.height / ratio;
+    
+    rect.size.width = w;
+    rect.size.height = h;
+    /*
+    float offset  = (w-h) / 2;
+    if( offset>0 ){
+        rect.origin.y = offset;
+    }else{
+        rect.origin.x = -offset;
+    }
+    */
+    [image drawInRect:rect];
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    
+    UIGraphicsEndImageContext();
+
+    return newImage;
 }
 
 @end

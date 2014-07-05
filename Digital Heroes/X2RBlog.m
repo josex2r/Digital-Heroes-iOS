@@ -59,7 +59,7 @@
         blog.activeFilter = [blog.filters objectAtIndex:0];
         blog.currentPage = 1;
         blog.isLoading = NO;
-                        
+        blog.posts = [[NSMutableDictionary alloc] init];
     });
     
     return blog;
@@ -71,6 +71,33 @@
 
 -(X2RBlogFilter *)getFiltersByName:(NSString*)name{
     return [self.filters filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"SELF.name == %@", name]][0];
+}
+
+-(void)pushPosts:(NSArray *)posts intoFilter:(X2RBlogFilter *)filter andPage:(int)page{
+    NSString *filterKey = [NSString stringWithFormat:@"%d", filter.identifier];
+    NSMutableDictionary *filteredPosts = (NSMutableDictionary*)[self.posts objectForKey:filterKey];
+    if( filteredPosts==nil ){
+        filteredPosts = [[NSMutableDictionary alloc] init];
+        [self.posts setObject:filteredPosts forKey:filterKey];
+    }
+    NSString *pageKey = [NSString stringWithFormat:@"%d", page];
+    NSArray *filteredPagedPosts = (NSArray*)[filteredPosts objectForKey:pageKey];
+    if( filteredPagedPosts==nil ){
+        [filteredPosts setObject:posts forKey:pageKey];
+    }
+}
+
+-(NSArray*)getPostsFromFilter:(X2RBlogFilter *)filter andPage:(int)page{
+    NSString *filterKey = [NSString stringWithFormat:@"%d", filter.identifier];
+    NSMutableDictionary *filteredPosts = (NSMutableDictionary*)[self.posts objectForKey:filterKey];
+    if( filteredPosts!=nil ){
+        NSString *pageKey = [NSString stringWithFormat:@"%d", page];
+        NSArray *posts = [filteredPosts objectForKey:pageKey];
+        if( posts!=nil ){
+            return posts;
+        }
+    }
+    return  nil;
 }
 
 @end
