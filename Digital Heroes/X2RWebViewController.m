@@ -1,19 +1,18 @@
 //
-//  X2RGenericNavigationController.m
+//  X2RWebViewController.m
 //  Digital Heroes
 //
-//  Created by Jose-OSX on 08/07/14.
+//  Created by Jose Luis on 05/07/14.
 //  Copyright (c) 2014 josex2r. All rights reserved.
 //
 
-#import "X2RGenericNavigationController.h"
-#import "X2RColors.h"
+#import "X2RWebViewController.h"
 
-@interface X2RGenericNavigationController ()
+@interface X2RWebViewController ()
 
 @end
 
-@implementation X2RGenericNavigationController
+@implementation X2RWebViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -28,11 +27,14 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    //self.navigationBar.tintColor = [X2RColors red];
-    self.delegate = self;
-    [self.navigationBar setBarTintColor:[X2RColors redColor]];
-    [self.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
-    [self.navigationBar setTintColor:[UIColor whiteColor]];
+    self.navigationItem.title = self.post.title;
+    
+    NSURL *url = [NSURL URLWithString:self.post.link];
+    NSURLRequest *req = [NSURLRequest requestWithURL:url];
+    [self.webView loadRequest:req];
+    
+    [self.loaderView startAnimating];
+    [self.loaderView setHidden:NO];
 }
 
 - (void)didReceiveMemoryWarning

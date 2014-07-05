@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface X2RGenericNavigationController : UINavigationController
+@interface X2RGenericNavigationController : UINavigationController <UINavigationControllerDelegate>
 
 @end

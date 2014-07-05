@@ -12,6 +12,7 @@
 #import "X2RPost.h"
 #import "X2RXMLPullParser.h"
 #import "X2RPageViewController.h"
+#import "X2RWebViewController.h"
 
 @interface X2RPostTableController ()
 
@@ -231,6 +232,15 @@
     UIGraphicsEndImageContext();
 
     return newImage;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    //[self performSegueWithIdentifier:@"ShowPost" sender:indexPath];
+    X2RWebViewController *webView = [self.storyboard instantiateViewControllerWithIdentifier:@"ShowPost"];
+    
+    webView.post = [self.postList objectAtIndex:indexPath.row];
+    
+    [self.navigationController pushViewController:webView animated:YES];
 }
 
 @end

@@ -50,6 +50,7 @@
 		8F7B65F419685B4B00F70676 /* ic_super_social.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F7B65E819685B4B00F70676 /* ic_super_social.png */; };
 		8F7B65F519685B4B00F70676 /* ic_super_speed.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F7B65E919685B4B00F70676 /* ic_super_speed.png */; };
 		8F7B65F619685B4B00F70676 /* ic_super_trix.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F7B65EA19685B4B00F70676 /* ic_super_trix.png */; };
+		8F7B65FC19689CEA00F70676 /* X2RWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F7B65FB19689CEA00F70676 /* X2RWebViewController.m */; };
 		8FA5B27619684CBF00DE1383 /* X2RPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FA5B27519684CBF00DE1383 /* X2RPost.m */; };
 		8FA5B27A19684F7100DE1383 /* X2RBlog.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FA5B27919684F7100DE1383 /* X2RBlog.m */; };
 /* End PBXBuildFile section */
@@ -125,6 +126,8 @@
 		8F7B65E819685B4B00F70676 /* ic_super_social.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_super_social.png; sourceTree = "<group>"; };
 		8F7B65E919685B4B00F70676 /* ic_super_speed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_super_speed.png; sourceTree = "<group>"; };
 		8F7B65EA19685B4B00F70676 /* ic_super_trix.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_super_trix.png; sourceTree = "<group>"; };
+		8F7B65FA19689CEA00F70676 /* X2RWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = X2RWebViewController.h; sourceTree = "<group>"; };
+		8F7B65FB19689CEA00F70676 /* X2RWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = X2RWebViewController.m; sourceTree = "<group>"; };
 		8FA5B27419684CBF00DE1383 /* X2RPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = X2RPost.h; sourceTree = "<group>"; };
 		8FA5B27519684CBF00DE1383 /* X2RPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = X2RPost.m; sourceTree = "<group>"; };
 		8FA5B27819684F7100DE1383 /* X2RBlog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = X2RBlog.h; sourceTree = "<group>"; };
@@ -293,6 +296,8 @@
 				5392539719757E5F00A0E4C6 /* X2RPostTableController.m */,
 				5392539B1975B09100A0E4C6 /* X2RGenericTabBarController.h */,
 				5392539C1975B09100A0E4C6 /* X2RGenericTabBarController.m */,
+				8F7B65FA19689CEA00F70676 /* X2RWebViewController.h */,
+				8F7B65FB19689CEA00F70676 /* X2RWebViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -451,6 +456,7 @@
 				5391B6D6196BE7D6008E5A86 /* X2RGenericNavigationController.m in Sources */,
 				5391B6D9196BEA23008E5A86 /* X2RColors.m in Sources */,
 				5392538F1975091D00A0E4C6 /* X2RBlogFilter.m in Sources */,
+				8F7B65FC19689CEA00F70676 /* X2RWebViewController.m in Sources */,
 				53925395197577FF00A0E4C6 /* X2RXMLPullParser.m in Sources */,
 				5391B6EA196BFD4C008E5A86 /* FlatButton.m in Sources */,
 				53CA161A195B29BD00EFC500 /* X2RPageViewController.m in Sources */,

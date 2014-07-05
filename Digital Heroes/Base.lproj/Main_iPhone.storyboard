@@ -23,6 +23,42 @@
             </objects>
             <point key="canvasLocation" x="-107" y="191"/>
         </scene>
+        <!--Web View Controller-->
+        <scene sceneID="TQZ-PU-HsE">
+            <objects>
+                <viewController storyboardIdentifier="ShowPost" id="L70-ix-iS7" customClass="X2RWebViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Ltm-4E-Dbd"/>
+                        <viewControllerLayoutGuide type="bottom" id="zAq-Og-2Qk"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="eGa-jx-ECm">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jnU-7k-g4W">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </webView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="APS-ge-Da0">
+                                <rect key="frame" x="142" y="265" width="37" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="color" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Brb-kJ-l1g"/>
+                    <connections>
+                        <outlet property="loaderView" destination="APS-ge-Da0" id="CJj-SK-HQu"/>
+                        <outlet property="webView" destination="jnU-7k-g4W" id="KMB-53-YJG"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1z1-Vs-uBQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1441" y="857"/>
+        </scene>
         <!--Post Table Controller - Root View Controller-->
         <scene sceneID="ezC-gz-z9o">
             <objects>

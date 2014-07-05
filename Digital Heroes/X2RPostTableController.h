@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface X2RPostTableController : UITableViewController
+@interface X2RPostTableController : UITableViewController <UITableViewDelegate>
 
 @property (strong, nonatomic) NSMutableArray *postList;
 
