@@ -11,7 +11,6 @@
 #import "X2RBlog.h"
 #import "X2RBlogFilter.h"
 #import "NSString+FontAwesome.h"
-#import "FlatButton.h"
 #import "X2RPostTableController.h"
 
 @interface X2RFiltersTableController ()
@@ -104,12 +103,16 @@
     //Get current filter
     X2RBlogFilter *filter = [filters objectAtIndex:indexPath.row];
    
-    FlatButton *iconFilter = (FlatButton*)[cell.contentView viewWithTag:987654321];
-    FlatButton *btnFilter = (FlatButton*)[cell.contentView viewWithTag:123456789];
+    UIButton *iconFilter = (UIButton*)[cell.contentView viewWithTag:987654321];
+    //FlatButton *iconFilter = (FlatButton*)[cell.contentView viewWithTag:987654321];
+    UIButton *btnFilter = (UIButton*)[cell.contentView viewWithTag:123456789];
+    //FlatButton *btnFilter = (FlatButton*)[cell.contentView viewWithTag:123456789];
     
     if( iconFilter==nil ){
         //Icon button
-        iconFilter = [[FlatButton alloc] initWithFrame:CGRectMake(10, 10, 65, 60) withBackgroundColor:filter.color];
+        //iconFilter = [[FlatButton alloc] initWithFrame:CGRectMake(10, 10, 65, 60) withBackgroundColor:filter.color];
+        iconFilter = [[UIButton alloc] initWithFrame:CGRectMake(10, 10, 65, 60)];
+        iconFilter.backgroundColor = filter.color;
         iconFilter.layer.cornerRadius = 2;
         iconFilter.tag = 987654321;
         [iconFilter addTarget:self action:@selector(flatBtnPressed:) forControlEvents:UIControlEventTouchUpInside];
@@ -118,7 +121,9 @@
     
     if( btnFilter==nil ){
         //Text button
-        btnFilter = [[FlatButton alloc] initWithFrame:CGRectMake(70, 10, 240, 60) withBackgroundColor:filter.color];
+        //btnFilter = [[FlatButton alloc] initWithFrame:CGRectMake(70, 10, 240, 60) withBackgroundColor:filter.color];
+        btnFilter = [[UIButton alloc] initWithFrame:CGRectMake(70, 10, 240, 60)];
+        btnFilter.backgroundColor = filter.color;
         btnFilter.layer.cornerRadius = 2;
         btnFilter.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
         btnFilter.tag = 123456789;
