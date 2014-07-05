@@ -35,8 +35,6 @@
                [self.storyboard instantiateViewControllerWithIdentifier:@"BlogFilters"]
                ];
     
-    ((X2RFiltersTableViewController*)[self.pages objectAtIndex:0]).title = @"Categorías";
-    
     self.pageController = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal options:nil];
     //Initialize datasource and delegate
     self.pageController.dataSource = self;
@@ -98,9 +96,9 @@
     NSArray *viewControllers = [NSArray arrayWithObjects:[self.pages objectAtIndex:self.pageControl.currentPage], nil];
     
     if( self.pageControl.currentPage>index ){
-        [self.pageController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
+        [self.pageController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];
     }else{
-        [self.pageController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionReverse animated:NO completion:nil];
+        [self.pageController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionReverse animated:YES completion:nil];
     }
 }
 

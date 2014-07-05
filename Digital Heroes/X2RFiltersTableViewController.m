@@ -54,11 +54,11 @@
     if( currentPage==0 ){
         //Categories
         filters = [blog getFiltersByType:[X2RBlogFilter typeCategory]];
-        self.navigationController.title = @"Categorías";
+        self.navigationItem.title = @"Categorías";
     }else{
         //Authors
         filters = [blog getFiltersByType:[X2RBlogFilter typeAuthor]];
-        self.navigationController.title = @"Super Héroes";
+        self.navigationItem.title = @"Super Héroes";
     }
     
 }
@@ -90,21 +90,23 @@
     
     if( cell==nil ){
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-        
     }
+    
+    //Get current filter
+    X2RBlogFilter *filter = [filters objectAtIndex:indexPath.row];
    
     FlatButton *iconFilter = ((FlatButton*)[cell.contentView viewWithTag:987654321]);
     FlatButton *btnFilter = ((FlatButton*)[cell.contentView viewWithTag:123456789]);
     if( btnFilter==nil ){
         //Icon button
-        iconFilter = [[FlatButton alloc] initWithFrame:CGRectMake(10, 10, 65, 60) withBackgroundColor:[UIColor greenColor]];
+        iconFilter = [[FlatButton alloc] initWithFrame:CGRectMake(10, 10, 65, 60) withBackgroundColor:filter.color];
         iconFilter.layer.cornerRadius = 2;
         iconFilter.tag = 987654321;
         [iconFilter addTarget:self action:@selector(flatBtnPressed:) forControlEvents:UIControlEventTouchUpInside];
         [cell.contentView addSubview:iconFilter];
         
         //Text button
-        btnFilter = [[FlatButton alloc] initWithFrame:CGRectMake(70, 10, 240, 60) withBackgroundColor:[UIColor greenColor]];
+        btnFilter = [[FlatButton alloc] initWithFrame:CGRectMake(70, 10, 240, 60) withBackgroundColor:filter.color];
         btnFilter.layer.cornerRadius = 2;
         btnFilter.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
         btnFilter.tag = 123456789;
@@ -112,12 +114,16 @@
         [cell.contentView addSubview:btnFilter];
     }
     
-    //Get current filter
-    X2RBlogFilter *filter = [filters objectAtIndex:indexPath.row];
-    
     //Set icon
-    [iconFilter setTitle:filter.icon forState:UIControlStateNormal];
-    [iconFilter setFont:[UIFont fontWithName:kFontAwesomeFamilyName size:25]];
+    if( currentPage==0 ){
+        //Categories
+        [iconFilter setTitle:filter.icon forState:UIControlStateNormal];
+        iconFilter.titleLabel.font = [UIFont fontWithName:kFontAwesomeFamilyName size:25];
+    }else{
+        //Authors
+        [iconFilter setImage:[UIImage imageNamed:filter.icon] forState:UIControlStateNormal];
+        iconFilter.imageEdgeInsets = UIEdgeInsetsMake(15, 15, 15, 20);
+    }
     [iconFilter setBackgroundColor:filter.color];
     
     //Set text
@@ -133,6 +139,22 @@
 
 -(void)flatBtnPressed:(id)button{
     NSLog(@"Flat btn pressed");
+    
+    int pageToSwap = 1;
+    UIViewController *viewToSwap = [pageController.pages objectAtIndex:pageToSwap];
+    UIPageViewControllerNavigationDirection directionToSwap;
+    
+    if( currentPage==0 ){
+        //Categories
+        directionToSwap = UIPageViewControllerNavigationDirectionForward;
+    }else{
+        //Authors
+        directionToSwap = UIPageViewControllerNavigationDirectionReverse;
+    }
+    //Perform slide
+    [pageController.pageController setViewControllers:@[viewToSwap] direction:directionToSwap animated:YES completion:nil];
+    //Change circle color
+    [pageController.pageControl setCurrentPage:pageToSwap];
 }
 
 /*
