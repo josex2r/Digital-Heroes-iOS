@@ -14,7 +14,7 @@
 +(int)typeCategory{ return 1; }
 +(int)typeAuthor{ return 2; }
 
--(id)initWithId:(int)identifier andName:(NSString *)name andFeedUrl:(NSString *)feedUrl andType:(int)type andColor:(UIColor *)color andIcon:(NSString *)icon{
+-(id)initWithId:(int)identifier andName:(NSString *)name andFeedUrl:(NSString *)feedUrl andType:(int)type andColor:(UIColor *)color andIcon:(NSString *)icon isFontAwesome:(BOOL)isFA{
     if( [super init]!=nil ){
         _identifier = identifier;
         _name = name;
@@ -22,6 +22,7 @@
         _type = type;
         _color = color;
         _icon = icon;
+        _fontAwesome = isFA;
     }
     return self;
 }

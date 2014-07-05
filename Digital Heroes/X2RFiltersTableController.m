@@ -132,14 +132,13 @@
         [cell.contentView addSubview:btnFilter];
     }
     
-    //Set ico
-    NSLog(@"%hhd", [filter.icon hasPrefix:@"\\uf"]);
-    if( currentPage==0 ){
-        //Categories
+    //Set icon
+    if( filter.fontAwesome ){
+        //Font icon
         [iconFilter setTitle:filter.icon forState:UIControlStateNormal];
         iconFilter.titleLabel.font = [UIFont fontWithName:kFontAwesomeFamilyName size:25];
     }else{
-        //Authors
+        //Image icon
         [iconFilter setImage:[UIImage imageNamed:filter.icon] forState:UIControlStateNormal];
         iconFilter.imageEdgeInsets = UIEdgeInsetsMake(15, 15, 15, 20);
     }

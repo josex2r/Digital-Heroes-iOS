@@ -20,12 +20,14 @@
 @property (copy, nonatomic) NSString *feedUrl;
 @property (strong, nonatomic) UIColor *color;
 @property (copy, nonatomic) NSString *icon;
+@property (nonatomic) BOOL fontAwesome;
 
 -(id) initWithId:(int) identifier
          andName:(NSString*) name
       andFeedUrl:(NSString*) feedUrl
          andType:(int) type
         andColor:(UIColor*) color
-         andIcon:(NSString*) icon;
+         andIcon:(NSString*) icon
+   isFontAwesome:(BOOL) isFA;
 
 @end
