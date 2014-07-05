@@ -89,9 +89,9 @@
                         <viewControllerLayoutGuide type="top" id="KCe-qV-L4U"/>
                         <viewControllerLayoutGuide type="bottom" id="bqJ-sx-90i"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="5L1-4y-1tX">
+                    <scrollView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" id="VQb-yt-L5m">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <subviews>
                             <pageControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="2lN-gQ-0g0">
                                 <rect key="frame" x="141" y="484" width="39" height="37"/>
@@ -100,8 +100,7 @@
                                 <color key="currentPageIndicatorTintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </pageControl>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
+                    </scrollView>
                     <tabBarItem key="tabBarItem" systemItem="more" id="HL4-3d-hjq"/>
                     <navigationItem key="navigationItem" id="kIy-hZ-hiE"/>
                     <connections>
@@ -121,7 +120,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FilterCell" rowHeight="118" id="prr-Om-78f">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FilterCell" rowHeight="118" id="prr-Om-78f">
                                 <rect key="frame" x="0.0" y="86" width="320" height="118"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="prr-Om-78f" id="q1H-1G-XVm">

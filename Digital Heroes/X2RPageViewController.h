@@ -16,5 +16,6 @@
 @property (strong, nonatomic) UIPageViewController *pageController;
 
 @property (nonatomic) int currentIndex;
+@property (nonatomic) BOOL isTransitioning;
 
 @end

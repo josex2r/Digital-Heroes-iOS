@@ -106,7 +106,13 @@
     if( completed ){
         UIViewController *visibleViewController = self.pageController.viewControllers[0];
         self.currentIndex = [self.pages indexOfObject:visibleViewController];
+        
+        self.isTransitioning = NO;
     }
+}
+
+- (void)pageViewController:(UIPageViewController *)pageViewController willTransitionToViewControllers:(NSArray *)pendingViewControllers{
+    self.isTransitioning = YES;
 }
 
 @end

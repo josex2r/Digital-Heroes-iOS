@@ -134,78 +134,37 @@
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    //Flat button height + margins
     return 80;
 }
 
 -(void)flatBtnPressed:(id)button{
-    NSLog(@"Flat btn pressed");
     
+    //Cancel pageController touch, it will break the APP when holding down the button
+    /*self.tableView.scrollEnabled = NO;
+    for(UIGestureRecognizer *recognizer in pageController.pageController.gestureRecognizers){
+        recognizer.enabled = NO;
+    }
+    for(UIScrollView *view in pageController.pageController.view.subviews){
+        if([view isKindOfClass:[UIScrollView class]]){
+            BOOL enabled = view.panGestureRecognizer.enabled;
+            view.panGestureRecognizer.enabled = !enabled;
+            view.panGestureRecognizer.enabled = enabled;
+        }
+    }*/
+    //[button sendActionsForControlEvents:UIControlEventTouchCancel];
+    
+    //Swap to central view
     int pageToSwap = 1;
     UIViewController *viewToSwap = [pageController.pages objectAtIndex:pageToSwap];
-    UIPageViewControllerNavigationDirection directionToSwap;
-    
-    if( currentPage==0 ){
-        //Categories
-        directionToSwap = UIPageViewControllerNavigationDirectionForward;
-    }else{
-        //Authors
-        directionToSwap = UIPageViewControllerNavigationDirectionReverse;
-    }
     //Perform slide
-    [pageController.pageController setViewControllers:@[viewToSwap] direction:directionToSwap animated:YES completion:nil];
-    //Change circle color
-    [pageController.pageControl setCurrentPage:pageToSwap];
+    UIPageControl *control = pageController.pageControl;
+    [pageController.pageController setViewControllers:@[viewToSwap] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:^(BOOL completed){
+        //Change circle color
+        [control setCurrentPage:pageToSwap];
+    }];
 }
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
 
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a story board-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-
- */
 
 @end
