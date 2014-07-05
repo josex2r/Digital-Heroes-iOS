@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>F1B6A4E9-9CFF-4025-AA82-560E8E47DDFC</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Digital Heroes</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>4D4B1096-BD4E-4293-944E-893FB4E44547</key>
+		<string>https://github.com/josex2r/Digital-Heroes-iOS.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Digital Heroes.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>4D4B1096-BD4E-4293-944E-893FB4E44547</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/josex2r/Digital-Heroes-iOS.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>4D4B1096-BD4E-4293-944E-893FB4E44547</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>4D4B1096-BD4E-4293-944E-893FB4E44547</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Digital-Heroes-iOS</string>
+		</dict>
+	</array>
+</dict>
+</plist>
