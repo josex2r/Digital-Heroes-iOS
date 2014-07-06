@@ -33,6 +33,7 @@
     [self.navigationBar setBarTintColor:[X2RColors redColor]];
     [self.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
     [self.navigationBar setTintColor:[UIColor whiteColor]];
+    
 }
 
 - (void)didReceiveMemoryWarning

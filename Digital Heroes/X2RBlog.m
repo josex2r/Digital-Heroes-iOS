@@ -133,24 +133,24 @@
 }
 
 -(BOOL)addFavourite:(X2RPost *)post{
+    //Add post to cache
     NSMutableArray *favourites = [self getPostsFromFilter:[self.filters lastObject] andPage:1];
     [favourites addObject:post];
-    
+    //Add post to db
     [self.dbHelper addFavourite:post];
     
     return YES;
 }
 
 -(BOOL)removeFavourite:(X2RPost *)post{
-    
+    //Remove post from cache
     NSMutableArray *favourites = [self getPostsFromFilter:[self.filters lastObject] andPage:1];
     for (int i=0; i<[favourites count]; i++) {
         if( [post.title isEqualToString:((X2RPost*)[favourites objectAtIndex:i]).title] ){
-            NSLog(@"FOUND!!!!!!!");
             [favourites removeObjectAtIndex:i];
         }
     }
-    
+    //Remove post from db
     [self.dbHelper removeFavourite:post];
     
     return YES;

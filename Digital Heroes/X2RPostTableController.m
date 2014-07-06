@@ -66,6 +66,7 @@ static X2RBlog *blog;
     }else{
         //Initializing favourites tab
     }
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -162,6 +163,10 @@ static X2RBlog *blog;
         //Load more without clean the list
         [self performSelectorInBackground:@selector(loadNextPage) withObject:nil];
     }
+    
+    //Responsive view
+    iconFavourite.autoresizingMask = (UIViewAutoresizingFlexibleLeftMargin);
+    iconFavourite.autoresizesSubviews = YES;
     
     return cell;
 }
@@ -308,8 +313,6 @@ static X2RBlog *blog;
     X2RWebViewController *webView = [self.storyboard instantiateViewControllerWithIdentifier:@"ShowPost"];
     
     webView.post = [self.postList objectAtIndex:indexPath.row];
-    
-    [blog.dbHelper addFavourite:webView.post];
     
     [self.navigationController pushViewController:webView animated:YES];
 }

@@ -148,6 +148,10 @@
     [btnFilter setTitle:filter.name forState:UIControlStateNormal];
     [btnFilter setBackgroundColor:filter.color];
     
+    //Responsive view
+    btnFilter.autoresizingMask = (UIViewAutoresizingFlexibleWidth);
+    btnFilter.autoresizesSubviews = YES;
+    
     return cell;
 }
 

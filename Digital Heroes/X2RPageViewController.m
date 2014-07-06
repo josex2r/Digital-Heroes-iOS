@@ -61,7 +61,11 @@
     [self.view sendSubviewToBack:[self.pageController view]];
     
     //[self.view bringSubviewToFront:self.pageControl];
-
+    
+    //Responsive view
+    self.view.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin);
+    self.view.autoresizesSubviews = YES;
+    
 }
 
 - (void)didReceiveMemoryWarning
