@@ -7,15 +7,39 @@
 //
 
 #import "X2RAppDelegate.h"
+#import "X2RXMLPullParser.h"
 
 @implementation X2RAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
-    return YES;
+    
+    
+    //Load first feed while splash image
+    __block BOOL succesful;
+    //Load feed from RSS
+    NSString *finalFeedUrl = [NSString stringWithFormat:@"http://blog.gobalo.es/feed/"];
+    NSURL *allPostFeedUrl = [NSURL URLWithString:finalFeedUrl];
+    
+    dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
+    
+    X2RXMLPullParser *parser = [[X2RXMLPullParser alloc] initWithContentsOfURL:allPostFeedUrl andCompletionBlock:^(NSMutableArray *posts) {
+        //Save posts array
+        self.posts = posts;
+        //Send semaphore signal to dismiss the spals screen
+        succesful = succesful;
+        dispatch_semaphore_signal(semaphore);
+    }];
+    
+    [parser parse];
+    
+    dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+    
+    //Wait aync var
+    return succesful;
 }
-							
+
 - (void)applicationWillResignActive:(UIApplication *)application
 {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

@@ -7,6 +7,7 @@
 //
 
 #import "X2RPostTableController.h"
+#import "X2RAppDelegate.h"
 #import "X2RBlog.h"
 #import "X2RBlogFilter.h"
 #import "X2RPost.h"
@@ -45,9 +46,13 @@ static X2RBlog *blog;
 
     self.postList = [[NSMutableArray alloc] init];
     
-    //Get blog
+    //Get blog and initialize app
     if( blog==nil ){
         blog = [X2RBlog sharedBlog];
+        
+        //Get first posts from the app delegate
+        X2RAppDelegate *delegate = (X2RAppDelegate*)[[UIApplication sharedApplication] delegate];
+        [blog pushPosts:delegate.posts intoFilter:[blog.filters firstObject] andPage:1];
         
         //Load posts
         [self loadFeedWithFilter:blog.activeFilter andClean:YES];
