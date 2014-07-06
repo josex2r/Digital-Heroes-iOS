@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "X2RBlogFilter.h"
 
-@interface X2RPostTableController : UITableViewController <UITableViewDelegate>
+@interface X2RPostTableController : UITableViewController <UITableViewDelegate, UITabBarControllerDelegate>
 
 @property (strong, nonatomic) NSMutableArray *postList;
 

@@ -116,7 +116,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <activityIndicatorView opaque="NO" tag="963852741" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="5Qm-he-atL">
-                                            <rect key="frame" x="283" y="0.0" width="37" height="37"/>
+                                            <rect key="frame" x="142" y="65" width="37" height="37"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <color key="color" cocoaTouchSystemColor="darkTextColor"/>
                                         </activityIndicatorView>

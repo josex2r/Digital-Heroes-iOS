@@ -80,9 +80,9 @@
         
         const char *insert_stmt = "INSERT INTO favourites (title, link, date, creator, guid, description, imageLink) VALUES (?, ?, ?, ?, ?, ?, ?)";
         
-        int test = sqlite3_prepare_v2(mySqliteDB, insert_stmt, -1, &statement, NULL);
+        sqlite3_prepare_v2(mySqliteDB, insert_stmt, -1, &statement, NULL);
         //NSLog(@"%@", mySqliteDB);
-        NSLog(@"%d",test);
+        //NSLog(@"%d",test);
         sqlite3_bind_text(statement, 1, [post.title UTF8String], -1, SQLITE_TRANSIENT);
         sqlite3_bind_text(statement, 2, [post.link UTF8String], -1, SQLITE_TRANSIENT);
         sqlite3_bind_text(statement, 3, [post.date UTF8String], -1, SQLITE_TRANSIENT);
@@ -90,19 +90,19 @@
         sqlite3_bind_text(statement, 5, [post.guid UTF8String], -1, SQLITE_TRANSIENT);
         sqlite3_bind_text(statement, 6, [post.description UTF8String], -1, SQLITE_TRANSIENT);
         sqlite3_bind_text(statement, 7, [post.imageLink UTF8String], -1, SQLITE_TRANSIENT);
-        NSLog(@"%d",sqlite3_step(statement) );
+        //NSLog(@"%d",sqlite3_step(statement) );
         if (sqlite3_step(statement) == SQLITE_DONE)
         {
             success = true;
         }
         
-        NSLog(@"%s", sqlite3_errmsg(mySqliteDB));
+        //NSLog(@"%s", sqlite3_errmsg(mySqliteDB));
         
         sqlite3_finalize(statement);
         sqlite3_close(mySqliteDB);
         
         
-        NSLog(@"Resultado %hhd", success);
+        //NSLog(@"Resultado %hhd", success);
     
     }
     
@@ -118,11 +118,12 @@
     
     if (sqlite3_open([self.databasePath UTF8String], &mySqliteDB) == SQLITE_OK)
     {
-        
-        NSString *deleteSQL = [NSString stringWithFormat:@"DELETE from favourites WHERE title = %@", post.title];
             
-        const char *delete_stmt = [deleteSQL UTF8String];
-        sqlite3_prepare_v2(mySqliteDB, delete_stmt, -1, &statement, NULL );
+        const char *insert_stmt = "DELETE from favourites WHERE title = ?";
+        
+        sqlite3_prepare_v2(mySqliteDB, insert_stmt, -1, &statement, NULL);
+        
+        sqlite3_bind_text(statement, 1, [post.title UTF8String], -1, SQLITE_TRANSIENT);
         
         if( sqlite3_step(statement) == SQLITE_DONE ){
             success = true;
@@ -131,7 +132,7 @@
         sqlite3_finalize(statement);
         sqlite3_close(mySqliteDB);
         
-        NSLog(@"Resultado %hhd", success);
+        //NSLog(@"Resultado %hhd", success);
         
     }
     
@@ -143,7 +144,7 @@
 - (NSMutableArray *) getFavourites
 {
     
-    NSLog(@"getFavourites");
+    //NSLog(@"getFavourites");
     
     NSMutableArray *favourites = [[NSMutableArray alloc] init];
     sqlite3_stmt *statement;
@@ -157,7 +158,7 @@
         {
             while (sqlite3_step(statement) == SQLITE_ROW)
             {
-                
+                /*
                 NSLog(@"%s", (char *)sqlite3_column_text(statement, 0));
                 NSLog(@"%s", (char *)sqlite3_column_text(statement, 1));
                 NSLog(@"%s", (char *)sqlite3_column_text(statement, 2));
@@ -165,7 +166,7 @@
                 NSLog(@"%s", (char *)sqlite3_column_text(statement, 4));
                 NSLog(@"%s", (char *)sqlite3_column_text(statement, 5));
                 NSLog(@"%s", (char *)sqlite3_column_text(statement, 6));
-                
+                */
                 X2RPost *post = [[X2RPost alloc] init];
                 
                 post.title = [NSString stringWithUTF8String:(char *)sqlite3_column_text(statement, 0)];

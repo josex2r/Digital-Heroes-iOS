@@ -89,17 +89,26 @@
     }
 }
 
--(NSArray*)getPostsFromFilter:(X2RBlogFilter *)filter andPage:(int)page{
+-(NSMutableArray*)getPostsFromFilter:(X2RBlogFilter *)filter andPage:(int)page{
     NSString *filterKey = [NSString stringWithFormat:@"%d", filter.identifier];
     NSMutableDictionary *filteredPosts = (NSMutableDictionary*)[self.posts objectForKey:filterKey];
     if( filteredPosts!=nil ){
         NSString *pageKey = [NSString stringWithFormat:@"%d", page];
-        NSArray *posts = [filteredPosts objectForKey:pageKey];
+        NSMutableArray *posts = [filteredPosts objectForKey:pageKey];
         if( posts!=nil ){
             return posts;
         }
     }
     return  nil;
+}
+
+-(void)removePostFromFavourites:(X2RPost *)post{
+    NSMutableArray *favourites = [self getPostsFromFilter:[self.filters lastObject] andPage:1];
+    for (int i=0; i<[favourites count]; i++) {
+        if( [post.title isEqualToString:((X2RPost*)[favourites objectAtIndex:i]).title] ){
+            [favourites removeObjectAtIndex:i];
+        }
+    }
 }
 
 -(void)loadFavouritesFromDB{
@@ -120,6 +129,29 @@
     }
     
     NSLog(@"Se han cargado %lu favoritos", (unsigned long)[favourites count]);
+}
+
+-(BOOL)isFavourite:(X2RPost *)post{
+    BOOL found = false;
+    for (X2RPost* obj in [self getPostsFromFilter:[self.filters lastObject] andPage:1]) {
+        if( [obj.title isEqualToString:post.title] ){
+            found = true;
+        }
+    }
+    return found;
+}
+
+-(BOOL)addFavourite:(X2RPost *)post{
+    [self.dbHelper addFavourite:post];
+    
+    return YES;
+}
+
+-(BOOL)removeFavourite:(X2RPost *)post{
+    [self removePostFromFavourites:post];
+    [self.dbHelper removeFavourite:post];
+    
+    return YES;
 }
 
 @end

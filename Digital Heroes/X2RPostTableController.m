@@ -13,6 +13,8 @@
 #import "X2RXMLPullParser.h"
 #import "X2RPageViewController.h"
 #import "X2RWebViewController.h"
+#import "UIFont+FontAwesome.h"
+#import "X2RColors.h"
 
 @interface X2RPostTableController ()
 
@@ -22,7 +24,9 @@
 {
     X2RBlog *blog;
     int currentPage;
+    int currentTab;
     X2RPageViewController *pageController;
+    X2RBlogFilter *lastFilterSelected;
 }
 
 
@@ -43,24 +47,27 @@
     //Get blog
     blog = [X2RBlog sharedBlog];
     
-    //Check if favourites tab
-    if( self.tabBarController.selectedIndex==1 ){
-        blog.activeFilter = [blog.filters lastObject];
-    }
+    //Set TabBar delegate
+    self.tabBarController.delegate = self;
     
     //Load posts
+    lastFilterSelected = blog.activeFilter;
     [self loadFeedWithFilter:blog.activeFilter andClean:YES];
     
-    pageController = ((X2RPageViewController*)[self.tabBarController.viewControllers objectAtIndex:0]);
-    currentPage = [pageController.pages indexOfObject:self.navigationController];
+    //Only add arrows if first tab is selected
+    currentTab =  0;
+    if( [self.navigationItem.title isEqualToString:@"Digital Heroes"] ){
+        pageController = ((X2RPageViewController*)[self.tabBarController.viewControllers objectAtIndex:0]);
+        currentPage = [pageController.pages indexOfObject:self.navigationController];
+        
+        //Add left arrow
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"ic_left_arrow"] style:UIBarButtonItemStylePlain target:self action:@selector(navItemPressed:)];
+        [self.navigationItem.leftBarButtonItem setTintColor:[UIColor whiteColor]];
     
-    //Add left arrow
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"ic_left_arrow"] style:UIBarButtonItemStylePlain target:self action:@selector(navItemPressed:)];
-    [self.navigationItem.leftBarButtonItem setTintColor:[UIColor whiteColor]];
-    
-    //Add right arrow
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"ic_right_arrow"] style:UIBarButtonItemStylePlain target:self action:@selector(navItemPressed:)];
-    [self.navigationItem.rightBarButtonItem setTintColor:[UIColor whiteColor]];
+        //Add right arrow
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"ic_right_arrow"] style:UIBarButtonItemStylePlain target:self action:@selector(navItemPressed:)];
+        [self.navigationItem.rightBarButtonItem setTintColor:[UIColor whiteColor]];
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -98,6 +105,22 @@
     UIImageView *postImage = (UIImageView*)[cell.contentView viewWithTag:987456321];
     UIActivityIndicatorView *postLoading = (UIActivityIndicatorView*)[cell.contentView viewWithTag:963852741];
     
+    //Add favoutie button
+    UIButton *iconFavourite = [[UIButton alloc] initWithFrame:CGRectMake(cell.frame.size.width-35, 5, 26, 26)];
+    iconFavourite.backgroundColor = [X2RColors redColor];
+    iconFavourite.layer.cornerRadius = 5;
+    iconFavourite.tag = indexPath.row;
+    [iconFavourite addTarget:self action:@selector(favouriteBtnPressed:) forControlEvents:UIControlEventTouchUpInside];
+    [cell.contentView addSubview:iconFavourite];
+    if( [blog isFavourite:post] ){
+        [iconFavourite setTitle:[NSString fontAwesomeIconStringForEnum:FAStar] forState:UIControlStateNormal];
+    }else{
+        [iconFavourite setTitle:[NSString fontAwesomeIconStringForEnum:FAStarO] forState:UIControlStateNormal];
+    }
+    iconFavourite.titleLabel.font = [UIFont fontWithName:kFontAwesomeFamilyName size:15];
+    
+    
+    //Draw the post
     if( post!=nil ){
         titleLabel.text = post.title;
         //Image
@@ -153,16 +176,19 @@
     
     //Check if the web view is opened
     if( [self.navigationController.childViewControllers count]>1 ){
+        //Close web view
         [self.navigationController popToRootViewControllerAnimated:NO];
     }
     
+    //Reset to page 1 if switching filter
     if( ![blog.activeFilter isEqual:filter] ){
         blog.currentPage = 1;
     }
     
-    //Update blog
+    //Update blog filter
     blog.activeFilter = filter;
     
+    //Clean the table if requested
     if( cleanTable ){
         self.navigationItem.title = blog.activeFilter.name;
         [self.postList removeAllObjects];
@@ -171,6 +197,7 @@
     
     blog.isLoading = YES;
     
+    //Dump post into table
     dispatch_queue_t concurrentQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0);
     dispatch_async(concurrentQueue, ^{
         
@@ -183,12 +210,15 @@
             blog.isLoading = NO;
         
         }else{
-        
-            NSString *finalFeedUrl = [NSString stringWithFormat:@"%@?paged=%d", blog.activeFilter.feedUrl, blog.currentPage];
+            //copy filter to prevent save post in another filter (is async man)!
+            X2RBlogFilter *currentFilter = [[X2RBlogFilter alloc] initWithId:blog.activeFilter.identifier andName:blog.activeFilter.name andFeedUrl:blog.activeFilter.feedUrl andType:blog.activeFilter.type andColor:blog.activeFilter.color andIcon:blog.activeFilter.icon isFontAwesome:blog.activeFilter.fontAwesome];
+            
+            //Load feed from RSS
+            NSString *finalFeedUrl = [NSString stringWithFormat:@"%@?paged=%d", currentFilter.feedUrl, blog.currentPage];
             NSURL *allPostFeedUrl = [NSURL URLWithString:finalFeedUrl];
         
             X2RXMLPullParser *parser = [[X2RXMLPullParser alloc] initWithContentsOfURL:allPostFeedUrl andCompletionBlock:^(NSMutableArray *posts) {
-                [blog pushPosts:posts intoFilter:blog.activeFilter andPage:blog.currentPage];
+                [blog pushPosts:posts intoFilter:currentFilter andPage:blog.currentPage];
                 //Load post into data source
                 [self.postList addObjectsFromArray:posts];
                 //Reload table
@@ -225,6 +255,24 @@
     //Change circle color
     UIPageControl *control = pageController.pageControl;
     [control setCurrentPage:viewToSwapIndex];
+}
+
+-(void)favouriteBtnPressed:(UIButton*)button{
+    //Favourite button tag is equal to the indexPath
+    X2RPost *post = [self.postList objectAtIndex:button.tag];
+    
+    if( [blog isFavourite:post] ){
+        //RRemove post
+        [blog removeFavourite:post];
+        //Change icon
+        [button setTitle:[NSString fontAwesomeIconStringForEnum:FAStarO] forState:UIControlStateNormal];
+    }else{
+        //Add post
+        [blog addFavourite:post];
+        //Change icon
+        [button setTitle:[NSString fontAwesomeIconStringForEnum:FAStar] forState:UIControlStateNormal];
+    }
+    
 }
 
 -(UIImage*) scaleImage:(UIImage*)image toSize:(CGSize)newSize{
@@ -268,6 +316,21 @@
     [blog.dbHelper addFavourite:webView.post];
     
     [self.navigationController pushViewController:webView animated:YES];
+}
+
+-(void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController{
+    int index = [tabBarController.childViewControllers indexOfObject:viewController];
+    
+    currentTab = index;
+    
+    if( index==1 ){
+        lastFilterSelected = blog.activeFilter;
+        //Last object is Favourites
+        blog.activeFilter = [blog.filters lastObject];
+    }else{
+        blog.activeFilter = lastFilterSelected;
+        lastFilterSelected = [blog.filters lastObject];
+    }
 }
 
 @end
