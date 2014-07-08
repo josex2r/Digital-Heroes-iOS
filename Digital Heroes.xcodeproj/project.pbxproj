@@ -22,6 +22,7 @@
 		537397C219064F3B0024B7E0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 537397A119064F3B0024B7E0 /* UIKit.framework */; };
 		537397CA19064F3B0024B7E0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 537397C819064F3B0024B7E0 /* InfoPlist.strings */; };
 		537397CC19064F3B0024B7E0 /* Digital_HeroesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 537397CB19064F3B0024B7E0 /* Digital_HeroesTests.m */; };
+		53CA161A195B29BD00EFC500 /* X2RPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53CA1619195B29BD00EFC500 /* X2RPageViewController.m */; };
 		8FA5B27619684CBF00DE1383 /* X2RPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FA5B27519684CBF00DE1383 /* X2RPost.m */; };
 		8FA5B27A19684F7100DE1383 /* X2RBlog.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FA5B27919684F7100DE1383 /* X2RBlog.m */; };
 		8FA5B27D1968515400DE1383 /* X2RSparseArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FA5B27C1968515400DE1383 /* X2RSparseArray.m */; };
@@ -58,6 +59,8 @@
 		537397C719064F3B0024B7E0 /* Digital HeroesTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Digital HeroesTests-Info.plist"; sourceTree = "<group>"; };
 		537397C919064F3B0024B7E0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		537397CB19064F3B0024B7E0 /* Digital_HeroesTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Digital_HeroesTests.m; sourceTree = "<group>"; };
+		53CA1618195B29BD00EFC500 /* X2RPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = X2RPageViewController.h; sourceTree = "<group>"; };
+		53CA1619195B29BD00EFC500 /* X2RPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = X2RPageViewController.m; sourceTree = "<group>"; };
 		8FA5B27419684CBF00DE1383 /* X2RPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = X2RPost.h; sourceTree = "<group>"; };
 		8FA5B27519684CBF00DE1383 /* X2RPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = X2RPost.m; sourceTree = "<group>"; };
 		8FA5B27819684F7100DE1383 /* X2RBlog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = X2RBlog.h; sourceTree = "<group>"; };
@@ -126,6 +129,7 @@
 				537397AC19064F3B0024B7E0 /* X2RAppDelegate.h */,
 				537397AD19064F3B0024B7E0 /* X2RAppDelegate.m */,
 				537397AF19064F3B0024B7E0 /* Main_iPhone.storyboard */,
+				53CA161B195B29C100EFC500 /* Controllers */,
 				537397B219064F3B0024B7E0 /* Main_iPad.storyboard */,
 				537397B519064F3B0024B7E0 /* X2RViewController.h */,
 				537397B619064F3B0024B7E0 /* X2RViewController.m */,
@@ -164,6 +168,15 @@
 				537397C819064F3B0024B7E0 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		53CA161B195B29C100EFC500 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				53CA1618195B29BD00EFC500 /* X2RPageViewController.h */,
+				53CA1619195B29BD00EFC500 /* X2RPageViewController.m */,
+			);
+			name = Controllers;
 			sourceTree = "<group>";
 		};
 		8FA5B27719684CC300DE1383 /* Model */ = {
@@ -285,6 +298,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				53CA161A195B29BD00EFC500 /* X2RPageViewController.m in Sources */,
 				8FA5B27D1968515400DE1383 /* X2RSparseArray.m in Sources */,
 				537397AA19064F3B0024B7E0 /* main.m in Sources */,
 				537397B719064F3B0024B7E0 /* X2RViewController.m in Sources */,

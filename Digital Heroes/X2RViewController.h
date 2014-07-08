@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface X2RViewController : UIViewController
-//sfa
+
 @end
