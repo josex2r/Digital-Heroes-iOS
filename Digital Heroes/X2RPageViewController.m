@@ -29,9 +29,9 @@
 	// Do any additional setup after loading the view.
     //Set view pages
     _pages = @[
+               [self.storyboard instantiateViewControllerWithIdentifier:@"BlogCategories"],
                [self.storyboard instantiateViewControllerWithIdentifier:@"BlogPosts"],
-               [self.storyboard instantiateViewControllerWithIdentifier:@"BlogPosts"],
-               [self.storyboard instantiateViewControllerWithIdentifier:@"BlogPosts"]
+               [self.storyboard instantiateViewControllerWithIdentifier:@"BlogAuthors"]
                ];
     
     self.pageController = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal options:nil];
@@ -41,10 +41,10 @@
     
     [[self.pageController view] setFrame:[[self view] bounds]];
     
-    NSArray *viewControllers = [NSArray arrayWithObjects:[_pages objectAtIndex:0], nil];
+    NSArray *viewControllers = [NSArray arrayWithObjects:[_pages objectAtIndex:1], nil];
     
     [self.pageControl setNumberOfPages:[_pages count]];
-    [self.pageControl setCurrentPage:0];
+    [self.pageControl setCurrentPage:1];
     [self.pageControl addTarget:self action:@selector(changePage:) forControlEvents:UIControlEventValueChanged];
     
     [self.pageController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
@@ -70,7 +70,7 @@
 -(UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController{
     NSUInteger index = [_pages indexOfObject:viewController];
     [self.pageControl setCurrentPage:index];
-    NSLog(@"INDEX BEFORE: %lu", (unsigned long)index);
+    
     if( index>0 ){
         return [_pages objectAtIndex:index-1];
     }
@@ -80,7 +80,7 @@
 -(UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController{
     NSUInteger index = [_pages indexOfObject:viewController];
     [self.pageControl setCurrentPage:index];
-    NSLog(@"INDEX AFTER: %lu", (unsigned long)index);
+    
     if( index<[_pages count]-1 ){
         return [_pages objectAtIndex:index+1];
     }
