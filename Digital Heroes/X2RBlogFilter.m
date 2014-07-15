@@ -14,12 +14,14 @@
 +(int)typeCategory{ return 1; }
 +(int)typeAuthor{ return 2; }
 
--(id)initWithId:(int)identifier andName:(NSString *)name andFeedUrl:(NSString *)feedUrl andType:(int)type{
+-(id)initWithId:(int)identifier andName:(NSString *)name andFeedUrl:(NSString *)feedUrl andType:(int)type andColor:(X2RColors *)color andIcon:(NSString *)icon{
     if( [super init]!=nil ){
         _id = identifier;
         _name = name;
         _feedUrl = feedUrl;
         _type = type;
+        _color = color;
+        _icon = icon;
     }
     return self;
 }

@@ -7,6 +7,8 @@
 //
 
 #import "X2RBlog.h"
+#import "NSString+FontAwesome.h"
+#import "X2RColors.h"
 
 @implementation X2RBlog
 
@@ -18,16 +20,25 @@
         blog = [[X2RBlog alloc] init];
         
         blog.filters = @[
-                         [[X2RBlogFilter alloc] initWithId:0 andName:@"Todos" andFeedUrl:@"http://blog.gobalo.es/feed/" andType:[X2RBlogFilter typeSpecial]],
+                         //ALL
+                         [[X2RBlogFilter alloc] initWithId:0 andName:@"Todos" andFeedUrl:@"http://blog.gobalo.es/feed/" andType:[X2RBlogFilter typeSpecial] andColor:[X2RColors redColor] andIcon:[NSString fontAwesomeIconStringForEnum:FAList]],
                          
-                         [[X2RBlogFilter alloc] initWithId:1 andName:@"Advertising" andFeedUrl:@"http://blog.gobalo.es/feed/category/advertising-2/feed/" andType:[X2RBlogFilter typeCategory]],
-                         [[X2RBlogFilter alloc] initWithId:2 andName:@"Creatividad" andFeedUrl:@"http://blog.gobalo.es/feed/category/creatividad/feed/" andType:[X2RBlogFilter typeCategory]],
-                         [[X2RBlogFilter alloc] initWithId:3 andName:@"Inside Góbalo" andFeedUrl:@"http://blog.gobalo.es/feed/category/inside-gobalo/feed/" andType:[X2RBlogFilter typeCategory]],
-                         [[X2RBlogFilter alloc] initWithId:4 andName:@"Marketing y Social Media" andFeedUrl:@"http://blog.gobalo.es/feed/category/marketing-digital-y-social-media/feed/" andType:[X2RBlogFilter typeCategory]],
-                         [[X2RBlogFilter alloc] initWithId:5 andName:@"Negocios" andFeedUrl:@"http://blog.gobalo.es/feed/category/negocios/feed/" andType:[X2RBlogFilter typeCategory]],
-                         [[X2RBlogFilter alloc] initWithId:6 andName:@"Seo y Sem" andFeedUrl:@"http://blog.gobalo.es/feed/category/seo-y-sem/feed/" andType:[X2RBlogFilter typeCategory]],
-                         [[X2RBlogFilter alloc] initWithId:7 andName:@"Web y Programación" andFeedUrl:@"http://blog.gobalo.es/feed/category/web-y-programacion/feed/" andType:[X2RBlogFilter typeCategory]],
-                          
+                         //CATEGORIES
+                         [[X2RBlogFilter alloc] initWithId:1 andName:@"Advertising" andFeedUrl:@"http://blog.gobalo.es/feed/category/advertising-2/feed/" andType:[X2RBlogFilter typeCategory] andColor:[X2RColors lightBlueColor] andIcon:[NSString fontAwesomeIconStringForEnum:FAList]],
+                         
+                         [[X2RBlogFilter alloc] initWithId:2 andName:@"Creatividad" andFeedUrl:@"http://blog.gobalo.es/feed/category/creatividad/feed/" andType:[X2RBlogFilter typeCategory] andColor:[X2RColors purpleColor] andIcon:[NSString fontAwesomeIconStringForEnum:FAPencil]],
+                         
+                         [[X2RBlogFilter alloc] initWithId:3 andName:@"Inside Góbalo" andFeedUrl:@"http://blog.gobalo.es/feed/category/inside-gobalo/feed/" andType:[X2RBlogFilter typeCategory] andColor:[X2RColors greenColor] andIcon:[NSString fontAwesomeIconStringForEnum:FAEye]],
+                         
+                         [[X2RBlogFilter alloc] initWithId:4 andName:@"Marketing y Social Media" andFeedUrl:@"http://blog.gobalo.es/feed/category/marketing-digital-y-social-media/feed/" andType:[X2RBlogFilter typeCategory] andColor:[X2RColors yellowColor] andIcon:[NSString fontAwesomeIconStringForEnum:FAShoppingCart]],
+                         
+                         [[X2RBlogFilter alloc] initWithId:5 andName:@"Negocios" andFeedUrl:@"http://blog.gobalo.es/feed/category/negocios/feed/" andType:[X2RBlogFilter typeCategory] andColor:[X2RColors lightRedColor] andIcon:[NSString fontAwesomeIconStringForEnum:FAMoney]],
+                         
+                         [[X2RBlogFilter alloc] initWithId:6 andName:@"Seo y Sem" andFeedUrl:@"http://blog.gobalo.es/feed/category/seo-y-sem/feed/" andType:[X2RBlogFilter typeCategory] andColor:[X2RColors lightBlueColor] andIcon:[NSString fontAwesomeIconStringForEnum:FAThumbsOUp]],
+                         
+                         [[X2RBlogFilter alloc] initWithId:7 andName:@"Web y Programación" andFeedUrl:@"http://blog.gobalo.es/feed/category/web-y-programacion/feed/" andType:[X2RBlogFilter typeCategory] andColor:[X2RColors purpleColor] andIcon:[NSString fontAwesomeIconStringForEnum:FACode]],
+                         
+                         //AUTHORS
                          [[X2RBlogFilter alloc] initWithId:20 andName:@"Super 01101" andFeedUrl:@"http://blog.gobalo.es/feed/author/a-vara/feed/" andType:[X2RBlogFilter typeAuthor]],
                          [[X2RBlogFilter alloc] initWithId:21 andName:@"Super Code" andFeedUrl:@"http://blog.gobalo.es/feed/author/jl-represa/feed/" andType:[X2RBlogFilter typeAuthor]],
                          [[X2RBlogFilter alloc] initWithId:22 andName:@"Super Craft" andFeedUrl:@"http://blog.gobalo.es/feed/author/n-pastor/feed/" andType:[X2RBlogFilter typeAuthor]],

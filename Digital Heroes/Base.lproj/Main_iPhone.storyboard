@@ -112,20 +112,20 @@
             </objects>
             <point key="canvasLocation" x="485" y="-348"/>
         </scene>
-        <!--Filters Table View Controller - Categorías-->
+        <!--Filters Table View Controller - Categorías & Super Héroes-->
         <scene sceneID="LYp-D1-3Cs">
             <objects>
                 <tableViewController id="y83-iN-HiW" customClass="X2RFiltersTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="70" sectionHeaderHeight="22" sectionFooterHeight="22" id="fO3-ps-GH3">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="fO3-ps-GH3">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FilterCell" rowHeight="70" id="prr-Om-78f">
-                                <rect key="frame" x="0.0" y="86" width="320" height="70"/>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FilterCell" rowHeight="118" id="prr-Om-78f">
+                                <rect key="frame" x="0.0" y="86" width="320" height="118"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="prr-Om-78f" id="q1H-1G-XVm">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="69"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="118"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -135,45 +135,11 @@
                             <outlet property="delegate" destination="y83-iN-HiW" id="LKm-ss-j5z"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Categorías" id="HQH-mL-n3U"/>
+                    <navigationItem key="navigationItem" title="Categorías &amp; Super Héroes" id="HQH-mL-n3U"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3xk-og-RXd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1441" y="-717"/>
-        </scene>
-        <!--Generic Navigation Controller-->
-        <scene sceneID="nqx-8o-RBo">
-            <objects>
-                <navigationController storyboardIdentifier="BlogAuthors" definesPresentationContext="YES" id="x5t-8F-Gms" customClass="X2RGenericNavigationController" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="lDi-gG-bDy">
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="KNF-ub-2oc" kind="relationship" relationship="rootViewController" id="a7B-FC-vrL"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Cmj-6j-X3r" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="978" y="-21"/>
-        </scene>
-        <!--View Controller - Super Héroes-->
-        <scene sceneID="Kkj-ib-FNw">
-            <objects>
-                <viewController id="KNF-ub-2oc" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="UYo-84-A7a"/>
-                        <viewControllerLayoutGuide type="bottom" id="634-uD-Od4"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="jKp-mu-wFy">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Super Héroes" id="axV-7b-rUc"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="KOg-k9-0e6" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1441" y="-21"/>
         </scene>
         <!--Generic Navigation Controller-->
         <scene sceneID="0NP-PC-Uo5">

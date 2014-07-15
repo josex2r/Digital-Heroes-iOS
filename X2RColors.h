@@ -11,5 +11,24 @@
 @interface X2RColors : NSObject
 
 +(UIColor*) redColor;
++(UIColor*) lightBlueColor;
++(UIColor*) purpleColor;
++(UIColor*) greenColor;
++(UIColor*) yellowColor;
++(UIColor*) lightRedColor;
+
+//Authors
++(UIColor*) authorBinaryColor;
++(UIColor*) authorCodeColor;
++(UIColor*) authorCraftColor;
++(UIColor*) authorCreaColor;
++(UIColor*) authorIdeaColor;
++(UIColor*) authorNumbersColor;
++(UIColor*) authorPencilColor;
++(UIColor*) authorPixelColor;
++(UIColor*) authorSemColor;
++(UIColor*) authorSocialColor;
++(UIColor*) authorSpeedColor;
++(UIColor*) authorTrixColor;
 
 @end

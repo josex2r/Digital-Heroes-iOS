@@ -54,9 +54,11 @@
     if( currentPage==0 ){
         //Categories
         filters = [blog getFiltersByType:[X2RBlogFilter typeCategory]];
+        self.navigationController.title = @"Categorías";
     }else{
         //Authors
         filters = [blog getFiltersByType:[X2RBlogFilter typeAuthor]];
+        self.navigationController.title = @"Super Héroes";
     }
     
 }
@@ -88,23 +90,23 @@
     
     if( cell==nil ){
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-        // Configure the cell...
         
-    }else{
-        [[cell.contentView viewWithTag:123456789] removeFromSuperview];
     }
-    
+   
+    FlatButton *btnFilter = ((FlatButton*)[cell.contentView viewWithTag:123456789]);
+    if( btnFilter==nil ){
+        NSLog(@"btnFilter==nil");
+        btnFilter = [[FlatButton alloc] initWithFrame:CGRectMake(10, 10, 300, 50) withBackgroundColor:[UIColor greenColor]];
+        btnFilter.layer.cornerRadius = 10;
+        btnFilter.tag = 123456789;
+        [btnFilter addTarget:self action:@selector(flatBtnPressed:) forControlEvents:UIControlEventTouchUpInside];
+        
+        [cell.contentView addSubview:btnFilter];
+    }
     
     X2RBlogFilter *filter = [filters objectAtIndex:indexPath.row];
     
-    UIButton *flatCategoryBtn = [[FlatButton alloc] initWithFrame:CGRectMake(10, 10, 300, 50) withBackgroundColor:[UIColor greenColor]];
-    flatCategoryBtn.layer.cornerRadius = 10;
-    flatCategoryBtn.tag = 123456789;
-    [flatCategoryBtn addTarget:self action:@selector(flatBtnPressed:) forControlEvents:UIControlEventTouchUpInside];
-    
-    [cell.contentView addSubview:flatCategoryBtn];
-    
-    cell.textLabel.text = filter.name;
+    [btnFilter setTitle:filter.name forState:UIControlStateNormal];
     
     return cell;
 }

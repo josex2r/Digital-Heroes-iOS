@@ -18,10 +18,14 @@
 @property (nonatomic) int type;
 @property (copy, nonatomic) NSString *name;
 @property (copy, nonatomic) NSString *feedUrl;
+@property (strong, nonatomic) UIColor *color;
+@property (copy, nonatomic) NSString *icon;
 
 -(id) initWithId:(int) identifier
          andName:(NSString*) name
       andFeedUrl:(NSString*) feedUrl
-         andType:(int) type;
+         andType:(int) type
+        andColor:(X2RColors*) color
+         andIcon:(NSString*) icon;
 
 @end
