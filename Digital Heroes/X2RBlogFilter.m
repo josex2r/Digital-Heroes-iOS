@@ -14,7 +14,7 @@
 +(int)typeCategory{ return 1; }
 +(int)typeAuthor{ return 2; }
 
--(id)initWithId:(int)identifier andName:(NSString *)name andFeedUrl:(NSString *)feedUrl andType:(int)type andColor:(X2RColors *)color andIcon:(NSString *)icon{
+-(id)initWithId:(int)identifier andName:(NSString *)name andFeedUrl:(NSString *)feedUrl andType:(int)type andColor:(UIColor *)color andIcon:(NSString *)icon{
     if( [super init]!=nil ){
         _id = identifier;
         _name = name;

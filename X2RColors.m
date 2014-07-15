@@ -48,11 +48,11 @@ static UIColor *authorTrixColor;
 }
 
 +(UIColor *)yellowColor{
-    return colorRed!=nil ? colorRed : [UIColor colorWithRed:0.1 green:0.733 blue:0.2 alpha:1];
+    return colorRed!=nil ? colorRed : [UIColor colorWithRed:1 green:0.733 blue:0.2 alpha:1];
 }
 
 +(UIColor *)lightRedColor{
-    return colorRed!=nil ? colorRed : [UIColor colorWithRed:0.1 green:0.267 blue:0.267 alpha:1];
+    return colorRed!=nil ? colorRed : [UIColor colorWithRed:1 green:0.267 blue:0.267 alpha:1];
 }
 
 //Authors

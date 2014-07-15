@@ -107,6 +107,7 @@
     X2RBlogFilter *filter = [filters objectAtIndex:indexPath.row];
     
     [btnFilter setTitle:filter.name forState:UIControlStateNormal];
+    [btnFilter setBackgroundColor:filter.color];
     
     return cell;
 }

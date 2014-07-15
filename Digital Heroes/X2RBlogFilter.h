@@ -25,7 +25,7 @@
          andName:(NSString*) name
       andFeedUrl:(NSString*) feedUrl
          andType:(int) type
-        andColor:(X2RColors*) color
+        andColor:(UIColor*) color
          andIcon:(NSString*) icon;
 
 @end

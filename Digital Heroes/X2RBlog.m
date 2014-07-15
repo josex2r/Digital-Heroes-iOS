@@ -39,20 +39,20 @@
                          [[X2RBlogFilter alloc] initWithId:7 andName:@"Web y Programación" andFeedUrl:@"http://blog.gobalo.es/feed/category/web-y-programacion/feed/" andType:[X2RBlogFilter typeCategory] andColor:[X2RColors purpleColor] andIcon:[NSString fontAwesomeIconStringForEnum:FACode]],
                          
                          //AUTHORS
-                         [[X2RBlogFilter alloc] initWithId:20 andName:@"Super 01101" andFeedUrl:@"http://blog.gobalo.es/feed/author/a-vara/feed/" andType:[X2RBlogFilter typeAuthor]],
-                         [[X2RBlogFilter alloc] initWithId:21 andName:@"Super Code" andFeedUrl:@"http://blog.gobalo.es/feed/author/jl-represa/feed/" andType:[X2RBlogFilter typeAuthor]],
-                         [[X2RBlogFilter alloc] initWithId:22 andName:@"Super Craft" andFeedUrl:@"http://blog.gobalo.es/feed/author/n-pastor/feed/" andType:[X2RBlogFilter typeAuthor]],
-                         [[X2RBlogFilter alloc] initWithId:23 andName:@"Super Crea" andFeedUrl:@"http://blog.gobalo.es/feed/author/g-gomez/feed/" andType:[X2RBlogFilter typeAuthor]],
-                         [[X2RBlogFilter alloc] initWithId:24 andName:@"Super Idea" andFeedUrl:@"http://blog.gobalo.es/feed/author/j-azpeitia/feed/" andType:[X2RBlogFilter typeAuthor]],
-                         [[X2RBlogFilter alloc] initWithId:25 andName:@"Super Numbers" andFeedUrl:@"http://blog.gobalo.es/feed/author/m-becerra/feed/" andType:[X2RBlogFilter typeAuthor]],
-                         [[X2RBlogFilter alloc] initWithId:26 andName:@"Super Pencil" andFeedUrl:@"http://blog.gobalo.es/feed/author/a-fassi/feed/" andType:[X2RBlogFilter typeAuthor]],
-                         [[X2RBlogFilter alloc] initWithId:27 andName:@"Super Pixel" andFeedUrl:@"http://blog.gobalo.es/feed/author/f-bril/feed/" andType:[X2RBlogFilter typeAuthor]],
-                         [[X2RBlogFilter alloc] initWithId:28 andName:@"Super SEM" andFeedUrl:@"http://blog.gobalo.es/feed/author/l-casado/feed/" andType:[X2RBlogFilter typeAuthor]],
-                         [[X2RBlogFilter alloc] initWithId:29 andName:@"Super Social" andFeedUrl:@"http://blog.gobalo.es/feed/author/bloggobalo-es/feed/" andType:[X2RBlogFilter typeAuthor]],
-                         [[X2RBlogFilter alloc] initWithId:30 andName:@"Super Speed" andFeedUrl:@"http://blog.gobalo.es/feed/author/a-gonzalez/feed/" andType:[X2RBlogFilter typeAuthor]],
-                         [[X2RBlogFilter alloc] initWithId:31 andName:@"Super Trix" andFeedUrl:@"http://blog.gobalo.es/feed/author/cristina/feed/" andType:[X2RBlogFilter typeAuthor]],
+                         [[X2RBlogFilter alloc] initWithId:20 andName:@"Super 01101" andFeedUrl:@"http://blog.gobalo.es/feed/author/a-vara/feed/" andType:[X2RBlogFilter typeAuthor] andColor:[X2RColors authorBinaryColor] andIcon:@"ic_super_binary"],
+                         [[X2RBlogFilter alloc] initWithId:21 andName:@"Super Code" andFeedUrl:@"http://blog.gobalo.es/feed/author/jl-represa/feed/" andType:[X2RBlogFilter typeAuthor] andColor:[X2RColors authorCodeColor] andIcon:@"ic_super_code"],
+                         [[X2RBlogFilter alloc] initWithId:22 andName:@"Super Craft" andFeedUrl:@"http://blog.gobalo.es/feed/author/n-pastor/feed/" andType:[X2RBlogFilter typeAuthor] andColor:[X2RColors authorCraftColor] andIcon:@"ic_super_craft"],
+                         [[X2RBlogFilter alloc] initWithId:23 andName:@"Super Crea" andFeedUrl:@"http://blog.gobalo.es/feed/author/g-gomez/feed/" andType:[X2RBlogFilter typeAuthor] andColor:[X2RColors authorCreaColor] andIcon:@"ic_super_crea"],
+                         [[X2RBlogFilter alloc] initWithId:24 andName:@"Super Idea" andFeedUrl:@"http://blog.gobalo.es/feed/author/j-azpeitia/feed/" andType:[X2RBlogFilter typeAuthor] andColor:[X2RColors authorIdeaColor] andIcon:@"ic_super_idea"],
+                         [[X2RBlogFilter alloc] initWithId:25 andName:@"Super Numbers" andFeedUrl:@"http://blog.gobalo.es/feed/author/m-becerra/feed/" andType:[X2RBlogFilter typeAuthor] andColor:[X2RColors authorNumbersColor] andIcon:@"ic_super_numbers"],
+                         [[X2RBlogFilter alloc] initWithId:26 andName:@"Super Pencil" andFeedUrl:@"http://blog.gobalo.es/feed/author/a-fassi/feed/" andType:[X2RBlogFilter typeAuthor] andColor:[X2RColors authorPencilColor] andIcon:@"ic_super_pencil"],
+                         [[X2RBlogFilter alloc] initWithId:27 andName:@"Super Pixel" andFeedUrl:@"http://blog.gobalo.es/feed/author/f-bril/feed/" andType:[X2RBlogFilter typeAuthor] andColor:[X2RColors authorPixelColor] andIcon:@"ic_super_pixel"],
+                         [[X2RBlogFilter alloc] initWithId:28 andName:@"Super SEM" andFeedUrl:@"http://blog.gobalo.es/feed/author/l-casado/feed/" andType:[X2RBlogFilter typeAuthor] andColor:[X2RColors authorSemColor] andIcon:@"ic_super_sem"],
+                         [[X2RBlogFilter alloc] initWithId:29 andName:@"Super Social" andFeedUrl:@"http://blog.gobalo.es/feed/author/bloggobalo-es/feed/" andType:[X2RBlogFilter typeAuthor] andColor:[X2RColors authorSocialColor] andIcon:@"ic_super_social"],
+                         [[X2RBlogFilter alloc] initWithId:30 andName:@"Super Speed" andFeedUrl:@"http://blog.gobalo.es/feed/author/a-gonzalez/feed/" andType:[X2RBlogFilter typeAuthor] andColor:[X2RColors authorSpeedColor] andIcon:@"ic_super_speed"],
+                         [[X2RBlogFilter alloc] initWithId:31 andName:@"Super Trix" andFeedUrl:@"http://blog.gobalo.es/feed/author/cristina/feed/" andType:[X2RBlogFilter typeAuthor] andColor:[X2RColors authorTrixColor] andIcon:@"ic_super_trix"],
                          
-                         [[X2RBlogFilter alloc] initWithId:99 andName:@"Favoritos" andFeedUrl:nil andType:[X2RBlogFilter typeSpecial]]
+                         [[X2RBlogFilter alloc] initWithId:99 andName:@"Favoritos" andFeedUrl:nil andType:[X2RBlogFilter typeSpecial] andColor:nil andIcon:nil]
                          ];
         
         //Initialize with FILTER_ALL and page 0
