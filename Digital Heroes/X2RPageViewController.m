@@ -7,6 +7,7 @@
 //
 
 #import "X2RPageViewController.h"
+#import "X2RFiltersTableViewController.h"
 
 @interface X2RPageViewController ()
 
@@ -28,11 +29,13 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     //Set view pages
-    _pages = @[
-               [self.storyboard instantiateViewControllerWithIdentifier:@"BlogCategories"],
+    self.pages = @[
+               [self.storyboard instantiateViewControllerWithIdentifier:@"BlogFilters"],
                [self.storyboard instantiateViewControllerWithIdentifier:@"BlogPosts"],
-               [self.storyboard instantiateViewControllerWithIdentifier:@"BlogAuthors"]
+               [self.storyboard instantiateViewControllerWithIdentifier:@"BlogFilters"]
                ];
+    
+    ((X2RFiltersTableViewController*)[self.pages objectAtIndex:0]).title = @"Categorías";
     
     self.pageController = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal options:nil];
     //Initialize datasource and delegate
@@ -41,9 +44,10 @@
     
     [[self.pageController view] setFrame:[[self view] bounds]];
     
-    NSArray *viewControllers = [NSArray arrayWithObjects:[_pages objectAtIndex:1], nil];
+    self.currentIndex = 1;
+    NSArray *viewControllers = [NSArray arrayWithObjects:[self.pages objectAtIndex:1], nil];
     
-    [self.pageControl setNumberOfPages:[_pages count]];
+    [self.pageControl setNumberOfPages:[self.pages count]];
     [self.pageControl setCurrentPage:1];
     [self.pageControl addTarget:self action:@selector(changePage:) forControlEvents:UIControlEventValueChanged];
     
@@ -68,35 +72,42 @@
 }
 
 -(UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController{
-    NSUInteger index = [_pages indexOfObject:viewController];
+    NSUInteger index = [self.pages indexOfObject:viewController];
     [self.pageControl setCurrentPage:index];
     
     if( index>0 ){
-        return [_pages objectAtIndex:index-1];
+        return [self.pages objectAtIndex:index-1];
     }
     return nil;
 }
 
 -(UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController{
-    NSUInteger index = [_pages indexOfObject:viewController];
+    NSUInteger index = [self.pages indexOfObject:viewController];
     [self.pageControl setCurrentPage:index];
     
-    if( index<[_pages count]-1 ){
-        return [_pages objectAtIndex:index+1];
+    if( index<[self.pages count]-1 ){
+        return [self.pages objectAtIndex:index+1];
     }
     return nil;
 }
 
 -(void)changePage:(id)sender{
     UIViewController *visibleViewController = self.pageController.viewControllers[0];
-    NSUInteger index = [_pages indexOfObject:visibleViewController];
+    NSUInteger index = [self.pages indexOfObject:visibleViewController];
     
-    NSArray *viewControllers = [NSArray arrayWithObjects:[_pages objectAtIndex:self.pageControl.currentPage], nil];
+    NSArray *viewControllers = [NSArray arrayWithObjects:[self.pages objectAtIndex:self.pageControl.currentPage], nil];
     
     if( self.pageControl.currentPage>index ){
         [self.pageController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
     }else{
         [self.pageController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionReverse animated:NO completion:nil];
+    }
+}
+
+-(void)pageViewController:(UIPageViewController *)pageViewController didFinishAnimating:(BOOL)finished previousViewControllers:(NSArray *)previousViewControllers transitionCompleted:(BOOL)completed{
+    if( completed ){
+        UIViewController *visibleViewController = self.pageController.viewControllers[0];
+        self.currentIndex = [self.pages indexOfObject:visibleViewController];
     }
 }
 

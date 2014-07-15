@@ -112,35 +112,32 @@
             </objects>
             <point key="canvasLocation" x="485" y="-348"/>
         </scene>
-        <!--Categories View Controller - Categorías-->
-        <scene sceneID="lIh-4z-8Lv">
+        <!--Filters Table View Controller - Categorías-->
+        <scene sceneID="LYp-D1-3Cs">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="9Ug-Ze-IcO" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController id="B8n-8T-cBD" customClass="X2RCategoriesViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="aHQ-Uv-n8E"/>
-                        <viewControllerLayoutGuide type="bottom" id="aga-Qj-UsC"/>
-                    </layoutGuides>
-                    <scrollView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" id="1G8-qA-Ipa">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="800"/>
+                <tableViewController id="y83-iN-HiW" customClass="X2RFiltersTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="70" sectionHeaderHeight="22" sectionFooterHeight="22" id="fO3-ps-GH3">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IhM-eM-FPq">
-                                <rect key="frame" x="137" y="179" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <rect key="contentStretch" x="0.10000000000000002" y="0.0" width="1" height="1"/>
-                                <state key="normal" title="Button">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
-                        </subviews>
-                    </scrollView>
-                    <navigationItem key="navigationItem" title="Categorías" id="DHy-wA-DZ6"/>
-                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <connections>
-                        <outlet property="btnTest" destination="IhM-eM-FPq" id="wq1-t6-6Go"/>
-                    </connections>
-                </viewController>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FilterCell" rowHeight="70" id="prr-Om-78f">
+                                <rect key="frame" x="0.0" y="86" width="320" height="70"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="prr-Om-78f" id="q1H-1G-XVm">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="69"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="y83-iN-HiW" id="ykP-rx-9Qx"/>
+                            <outlet property="delegate" destination="y83-iN-HiW" id="LKm-ss-j5z"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Categorías" id="HQH-mL-n3U"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3xk-og-RXd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1441" y="-717"/>
         </scene>
@@ -181,15 +178,15 @@
         <!--Generic Navigation Controller-->
         <scene sceneID="0NP-PC-Uo5">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="lfv-Gk-u8m" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <navigationController storyboardIdentifier="BlogCategories" definesPresentationContext="YES" id="XtX-b7-Kco" customClass="X2RGenericNavigationController" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="BlogFilters" definesPresentationContext="YES" id="XtX-b7-Kco" customClass="X2RGenericNavigationController" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="9JU-Ls-Aua">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="B8n-8T-cBD" kind="relationship" relationship="rootViewController" id="461-96-qan"/>
+                        <segue destination="y83-iN-HiW" kind="relationship" relationship="rootViewController" id="5xm-x1-zJI"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lfv-Gk-u8m" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="978" y="-717"/>
         </scene>

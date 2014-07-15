@@ -24,12 +24,14 @@
 		537397CC19064F3B0024B7E0 /* Digital_HeroesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 537397CB19064F3B0024B7E0 /* Digital_HeroesTests.m */; };
 		5391B6D6196BE7D6008E5A86 /* X2RGenericNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5391B6D5196BE7D6008E5A86 /* X2RGenericNavigationController.m */; };
 		5391B6D9196BEA23008E5A86 /* X2RColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 5391B6D8196BEA23008E5A86 /* X2RColors.m */; };
-		5391B6E0196BF28A008E5A86 /* X2RCategoriesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5391B6DF196BF28A008E5A86 /* X2RCategoriesViewController.m */; };
+		5391B6E0196BF28A008E5A86 /* X2RBlogFiltersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5391B6DF196BF28A008E5A86 /* X2RBlogFiltersViewController.m */; };
 		5391B6E3196BF4D1008E5A86 /* NSString+FontAwesome.m in Sources */ = {isa = PBXBuildFile; fileRef = 5391B6E2196BF4D1008E5A86 /* NSString+FontAwesome.m */; };
 		5391B6E6196BFA2B008E5A86 /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5391B6E5196BF968008E5A86 /* FontAwesome.ttf */; };
 		5391B6EA196BFD4C008E5A86 /* FlatButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 5391B6E9196BFD4C008E5A86 /* FlatButton.m */; };
 		5391B6ED196BFD9B008E5A86 /* FAImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5391B6EC196BFD9B008E5A86 /* FAImageView.m */; };
 		5391B6F0196BFDDF008E5A86 /* UIFont+FontAwesome.m in Sources */ = {isa = PBXBuildFile; fileRef = 5391B6EF196BFDDF008E5A86 /* UIFont+FontAwesome.m */; };
+		5392538F1975091D00A0E4C6 /* X2RBlogFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 5392538E1975091D00A0E4C6 /* X2RBlogFilter.m */; };
+		5392539219751B3100A0E4C6 /* X2RFiltersTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5392539119751B3100A0E4C6 /* X2RFiltersTableViewController.m */; };
 		53CA161A195B29BD00EFC500 /* X2RPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53CA1619195B29BD00EFC500 /* X2RPageViewController.m */; };
 		8FA5B27619684CBF00DE1383 /* X2RPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FA5B27519684CBF00DE1383 /* X2RPost.m */; };
 		8FA5B27A19684F7100DE1383 /* X2RBlog.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FA5B27919684F7100DE1383 /* X2RBlog.m */; };
@@ -71,8 +73,8 @@
 		5391B6D5196BE7D6008E5A86 /* X2RGenericNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = X2RGenericNavigationController.m; sourceTree = "<group>"; };
 		5391B6D7196BEA23008E5A86 /* X2RColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = X2RColors.h; sourceTree = "<group>"; };
 		5391B6D8196BEA23008E5A86 /* X2RColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = X2RColors.m; sourceTree = "<group>"; };
-		5391B6DE196BF28A008E5A86 /* X2RCategoriesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = X2RCategoriesViewController.h; sourceTree = "<group>"; };
-		5391B6DF196BF28A008E5A86 /* X2RCategoriesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = X2RCategoriesViewController.m; sourceTree = "<group>"; };
+		5391B6DE196BF28A008E5A86 /* X2RBlogFiltersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = X2RBlogFiltersViewController.h; sourceTree = "<group>"; };
+		5391B6DF196BF28A008E5A86 /* X2RBlogFiltersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = X2RBlogFiltersViewController.m; sourceTree = "<group>"; };
 		5391B6E1196BF4D1008E5A86 /* NSString+FontAwesome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+FontAwesome.h"; sourceTree = "<group>"; };
 		5391B6E2196BF4D1008E5A86 /* NSString+FontAwesome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+FontAwesome.m"; sourceTree = "<group>"; };
 		5391B6E5196BF968008E5A86 /* FontAwesome.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome.ttf; sourceTree = "<group>"; };
@@ -82,6 +84,10 @@
 		5391B6EC196BFD9B008E5A86 /* FAImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FAImageView.m; sourceTree = "<group>"; };
 		5391B6EE196BFDDF008E5A86 /* UIFont+FontAwesome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+FontAwesome.h"; sourceTree = "<group>"; };
 		5391B6EF196BFDDF008E5A86 /* UIFont+FontAwesome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+FontAwesome.m"; sourceTree = "<group>"; };
+		5392538D1975091D00A0E4C6 /* X2RBlogFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = X2RBlogFilter.h; sourceTree = "<group>"; };
+		5392538E1975091D00A0E4C6 /* X2RBlogFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = X2RBlogFilter.m; sourceTree = "<group>"; };
+		5392539019751B3100A0E4C6 /* X2RFiltersTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = X2RFiltersTableViewController.h; sourceTree = "<group>"; };
+		5392539119751B3100A0E4C6 /* X2RFiltersTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = X2RFiltersTableViewController.m; sourceTree = "<group>"; };
 		53CA1618195B29BD00EFC500 /* X2RPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = X2RPageViewController.h; sourceTree = "<group>"; };
 		53CA1619195B29BD00EFC500 /* X2RPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = X2RPageViewController.m; sourceTree = "<group>"; };
 		8FA5B27419684CBF00DE1383 /* X2RPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = X2RPost.h; sourceTree = "<group>"; };
@@ -246,8 +252,10 @@
 				53CA1619195B29BD00EFC500 /* X2RPageViewController.m */,
 				5391B6D4196BE7D6008E5A86 /* X2RGenericNavigationController.h */,
 				5391B6D5196BE7D6008E5A86 /* X2RGenericNavigationController.m */,
-				5391B6DE196BF28A008E5A86 /* X2RCategoriesViewController.h */,
-				5391B6DF196BF28A008E5A86 /* X2RCategoriesViewController.m */,
+				5391B6DE196BF28A008E5A86 /* X2RBlogFiltersViewController.h */,
+				5391B6DF196BF28A008E5A86 /* X2RBlogFiltersViewController.m */,
+				5392539019751B3100A0E4C6 /* X2RFiltersTableViewController.h */,
+				5392539119751B3100A0E4C6 /* X2RFiltersTableViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -259,6 +267,8 @@
 				8FA5B27519684CBF00DE1383 /* X2RPost.m */,
 				8FA5B27819684F7100DE1383 /* X2RBlog.h */,
 				8FA5B27919684F7100DE1383 /* X2RBlog.m */,
+				5392538D1975091D00A0E4C6 /* X2RBlogFilter.h */,
+				5392538E1975091D00A0E4C6 /* X2RBlogFilter.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -375,12 +385,14 @@
 				5391B6ED196BFD9B008E5A86 /* FAImageView.m in Sources */,
 				5391B6D6196BE7D6008E5A86 /* X2RGenericNavigationController.m in Sources */,
 				5391B6D9196BEA23008E5A86 /* X2RColors.m in Sources */,
+				5392538F1975091D00A0E4C6 /* X2RBlogFilter.m in Sources */,
 				5391B6EA196BFD4C008E5A86 /* FlatButton.m in Sources */,
 				53CA161A195B29BD00EFC500 /* X2RPageViewController.m in Sources */,
+				5392539219751B3100A0E4C6 /* X2RFiltersTableViewController.m in Sources */,
 				8FA5B27D1968515400DE1383 /* X2RSparseArray.m in Sources */,
 				5391B6E3196BF4D1008E5A86 /* NSString+FontAwesome.m in Sources */,
 				537397AA19064F3B0024B7E0 /* main.m in Sources */,
-				5391B6E0196BF28A008E5A86 /* X2RCategoriesViewController.m in Sources */,
+				5391B6E0196BF28A008E5A86 /* X2RBlogFiltersViewController.m in Sources */,
 				537397B719064F3B0024B7E0 /* X2RViewController.m in Sources */,
 				8FA5B27A19684F7100DE1383 /* X2RBlog.m in Sources */,
 				5391B6F0196BFDDF008E5A86 /* UIFont+FontAwesome.m in Sources */,

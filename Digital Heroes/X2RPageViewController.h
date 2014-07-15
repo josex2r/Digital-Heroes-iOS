@@ -9,11 +9,12 @@
 #import <UIKit/UIKit.h>
 
 @interface X2RPageViewController : UIViewController <UIPageViewControllerDataSource, UIPageViewControllerDelegate>
-{
-    NSArray *_pages;
-}
+
+@property (strong, nonatomic) NSArray *pages;
 
 @property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
 @property (strong, nonatomic) UIPageViewController *pageController;
+
+@property (nonatomic) int currentIndex;
 
 @end

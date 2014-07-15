@@ -8,8 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface X2RCategoriesViewController : UIViewController
+@interface X2RBlogFiltersViewController : UITableViewController
 
-@property (weak, nonatomic) IBOutlet UIButton *btnTest;
 
 @end
