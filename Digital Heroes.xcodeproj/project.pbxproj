@@ -31,6 +31,9 @@
 		5391B6F0196BFDDF008E5A86 /* UIFont+FontAwesome.m in Sources */ = {isa = PBXBuildFile; fileRef = 5391B6EF196BFDDF008E5A86 /* UIFont+FontAwesome.m */; };
 		5392538F1975091D00A0E4C6 /* X2RBlogFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 5392538E1975091D00A0E4C6 /* X2RBlogFilter.m */; };
 		5392539219751B3100A0E4C6 /* X2RFiltersTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5392539119751B3100A0E4C6 /* X2RFiltersTableViewController.m */; };
+		53925395197577FF00A0E4C6 /* X2RXMLPullParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 53925394197577FF00A0E4C6 /* X2RXMLPullParser.m */; };
+		5392539819757E5F00A0E4C6 /* X2RPostTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5392539719757E5F00A0E4C6 /* X2RPostTableViewController.m */; };
+		5392539A19759D0F00A0E4C6 /* no_image.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5392539919759D0F00A0E4C6 /* no_image.jpg */; };
 		53CA161A195B29BD00EFC500 /* X2RPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53CA1619195B29BD00EFC500 /* X2RPageViewController.m */; };
 		8F7B65EB19685B4B00F70676 /* ic_super_01101.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F7B65DF19685B4B00F70676 /* ic_super_01101.png */; };
 		8F7B65EC19685B4B00F70676 /* ic_super_code.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F7B65E019685B4B00F70676 /* ic_super_code.png */; };
@@ -97,6 +100,11 @@
 		5392538E1975091D00A0E4C6 /* X2RBlogFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = X2RBlogFilter.m; sourceTree = "<group>"; };
 		5392539019751B3100A0E4C6 /* X2RFiltersTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = X2RFiltersTableViewController.h; sourceTree = "<group>"; };
 		5392539119751B3100A0E4C6 /* X2RFiltersTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = X2RFiltersTableViewController.m; sourceTree = "<group>"; };
+		53925393197577FF00A0E4C6 /* X2RXMLPullParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = X2RXMLPullParser.h; sourceTree = "<group>"; };
+		53925394197577FF00A0E4C6 /* X2RXMLPullParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = X2RXMLPullParser.m; sourceTree = "<group>"; };
+		5392539619757E5F00A0E4C6 /* X2RPostTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = X2RPostTableViewController.h; sourceTree = "<group>"; };
+		5392539719757E5F00A0E4C6 /* X2RPostTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = X2RPostTableViewController.m; sourceTree = "<group>"; };
+		5392539919759D0F00A0E4C6 /* no_image.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = no_image.jpg; sourceTree = "<group>"; };
 		53CA1618195B29BD00EFC500 /* X2RPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = X2RPageViewController.h; sourceTree = "<group>"; };
 		53CA1619195B29BD00EFC500 /* X2RPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = X2RPageViewController.m; sourceTree = "<group>"; };
 		8F7B65DF19685B4B00F70676 /* ic_super_01101.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_super_01101.png; sourceTree = "<group>"; };
@@ -177,7 +185,7 @@
 			isa = PBXGroup;
 			children = (
 				5391B6DC196BF12B008E5A86 /* Resources */,
-				5391B6DA196BEA26008E5A86 /* Abstract */,
+				5391B6DA196BEA26008E5A86 /* Utils */,
 				5391B6E7196BFD13008E5A86 /* Assets */,
 				537397AC19064F3B0024B7E0 /* X2RAppDelegate.h */,
 				537397AD19064F3B0024B7E0 /* X2RAppDelegate.m */,
@@ -223,13 +231,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		5391B6DA196BEA26008E5A86 /* Abstract */ = {
+		5391B6DA196BEA26008E5A86 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
 				5391B6D7196BEA23008E5A86 /* X2RColors.h */,
 				5391B6D8196BEA23008E5A86 /* X2RColors.m */,
+				53925393197577FF00A0E4C6 /* X2RXMLPullParser.h */,
+				53925394197577FF00A0E4C6 /* X2RXMLPullParser.m */,
 			);
-			name = Abstract;
+			name = Utils;
 			path = ..;
 			sourceTree = "<group>";
 		};
@@ -276,6 +286,8 @@
 				5391B6D5196BE7D6008E5A86 /* X2RGenericNavigationController.m */,
 				5392539019751B3100A0E4C6 /* X2RFiltersTableViewController.h */,
 				5392539119751B3100A0E4C6 /* X2RFiltersTableViewController.m */,
+				5392539619757E5F00A0E4C6 /* X2RPostTableViewController.h */,
+				5392539719757E5F00A0E4C6 /* X2RPostTableViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -294,6 +306,7 @@
 				8F7B65E719685B4B00F70676 /* ic_super_sem.png */,
 				8F7B65E819685B4B00F70676 /* ic_super_social.png */,
 				8F7B65E919685B4B00F70676 /* ic_super_speed.png */,
+				5392539919759D0F00A0E4C6 /* no_image.jpg */,
 				8F7B65EA19685B4B00F70676 /* ic_super_trix.png */,
 			);
 			name = Authors;
@@ -404,6 +417,7 @@
 				8F7B65F319685B4B00F70676 /* ic_super_sem.png in Resources */,
 				8F7B65F019685B4B00F70676 /* ic_super_numbers.png in Resources */,
 				8F7B65F419685B4B00F70676 /* ic_super_social.png in Resources */,
+				5392539A19759D0F00A0E4C6 /* no_image.jpg in Resources */,
 				8F7B65EB19685B4B00F70676 /* ic_super_01101.png in Resources */,
 				8F7B65F219685B4B00F70676 /* ic_super_pixel.png in Resources */,
 				8F7B65EF19685B4B00F70676 /* ic_super_idea.png in Resources */,
@@ -437,10 +451,12 @@
 				5391B6D6196BE7D6008E5A86 /* X2RGenericNavigationController.m in Sources */,
 				5391B6D9196BEA23008E5A86 /* X2RColors.m in Sources */,
 				5392538F1975091D00A0E4C6 /* X2RBlogFilter.m in Sources */,
+				53925395197577FF00A0E4C6 /* X2RXMLPullParser.m in Sources */,
 				5391B6EA196BFD4C008E5A86 /* FlatButton.m in Sources */,
 				53CA161A195B29BD00EFC500 /* X2RPageViewController.m in Sources */,
 				5392539219751B3100A0E4C6 /* X2RFiltersTableViewController.m in Sources */,
 				8FA5B27D1968515400DE1383 /* X2RSparseArray.m in Sources */,
+				5392539819757E5F00A0E4C6 /* X2RPostTableViewController.m in Sources */,
 				5391B6E3196BF4D1008E5A86 /* NSString+FontAwesome.m in Sources */,
 				537397AA19064F3B0024B7E0 /* main.m in Sources */,
 				537397B719064F3B0024B7E0 /* X2RViewController.m in Sources */,

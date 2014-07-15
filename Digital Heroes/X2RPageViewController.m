@@ -93,7 +93,7 @@
     UIViewController *visibleViewController = self.pageController.viewControllers[0];
     NSUInteger index = [self.pages indexOfObject:visibleViewController];
     
-    NSArray *viewControllers = [NSArray arrayWithObjects:[self.pages objectAtIndex:self.pageControl.currentPage], nil];
+    NSArray *viewControllers = @[[self.pages objectAtIndex:self.pageControl.currentPage]];
     
     if( self.pageControl.currentPage>index ){
         [self.pageController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];

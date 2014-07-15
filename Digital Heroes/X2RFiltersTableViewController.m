@@ -95,16 +95,19 @@
     //Get current filter
     X2RBlogFilter *filter = [filters objectAtIndex:indexPath.row];
    
-    FlatButton *iconFilter = ((FlatButton*)[cell.contentView viewWithTag:987654321]);
-    FlatButton *btnFilter = ((FlatButton*)[cell.contentView viewWithTag:123456789]);
-    if( btnFilter==nil ){
+    FlatButton *iconFilter = (FlatButton*)[cell.contentView viewWithTag:987654321];
+    FlatButton *btnFilter = (FlatButton*)[cell.contentView viewWithTag:123456789];
+    
+    if( iconFilter==nil ){
         //Icon button
         iconFilter = [[FlatButton alloc] initWithFrame:CGRectMake(10, 10, 65, 60) withBackgroundColor:filter.color];
         iconFilter.layer.cornerRadius = 2;
         iconFilter.tag = 987654321;
         [iconFilter addTarget:self action:@selector(flatBtnPressed:) forControlEvents:UIControlEventTouchUpInside];
         [cell.contentView addSubview:iconFilter];
-        
+    }
+    
+    if( btnFilter==nil ){
         //Text button
         btnFilter = [[FlatButton alloc] initWithFrame:CGRectMake(70, 10, 240, 60) withBackgroundColor:filter.color];
         btnFilter.layer.cornerRadius = 2;

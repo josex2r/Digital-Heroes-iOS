@@ -18,6 +18,7 @@
 @property (copy, nonatomic) NSString *guid;
 @property (copy, nonatomic) NSString *description;
 @property (copy, nonatomic) NSString *imageLink;
+@property (strong, nonatomic) UIImage *image;
 @property (strong, nonatomic) NSMutableArray *categories;
 
 -(id) initWithTitle: (NSString*) title;
