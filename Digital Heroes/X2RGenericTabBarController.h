@@ -1,5 +1,5 @@
 //
-//  X2RFiltersTableViewController.h
+//  X2RGenericTabBarController.h
 //  Digital Heroes
 //
 //  Created by Jose-OSX on 15/07/14.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface X2RFiltersTableViewController : UITableViewController
+@interface X2RGenericTabBarController : UITabBarController
 
 @end

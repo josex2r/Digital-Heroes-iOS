@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface X2RPostTableViewController : UITableViewController
+@interface X2RPostTableController : UITableViewController
 
 @property (strong, nonatomic) NSMutableArray *postList;
+
+-(void) loadFeed:(BOOL)cleanTable;
 
 @end

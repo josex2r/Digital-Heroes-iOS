@@ -7,7 +7,7 @@
 //
 
 #import "X2RPageViewController.h"
-#import "X2RFiltersTableViewController.h"
+#import "X2RFiltersTableController.h"
 
 @interface X2RPageViewController ()
 

@@ -16,7 +16,7 @@
 
 -(id)initWithId:(int)identifier andName:(NSString *)name andFeedUrl:(NSString *)feedUrl andType:(int)type andColor:(UIColor *)color andIcon:(NSString *)icon{
     if( [super init]!=nil ){
-        _id = identifier;
+        _identifier = identifier;
         _name = name;
         _feedUrl = feedUrl;
         _type = type;
@@ -27,7 +27,7 @@
 }
 
 -(BOOL)isEqual:(id)object{
-    return [object isMemberOfClass:self.class] && self.id==((X2RBlogFilter*)object).id;
+    return [object isMemberOfClass:self.class] && self.identifier==((X2RBlogFilter*)object).identifier;
 }
 
 @end

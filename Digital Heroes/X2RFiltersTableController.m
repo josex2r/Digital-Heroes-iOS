@@ -6,18 +6,19 @@
 //  Copyright (c) 2014 josex2r. All rights reserved.
 //
 
-#import "X2RFiltersTableViewController.h"
+#import "X2RFiltersTableController.h"
 #import "X2RPageViewController.h"
 #import "X2RBlog.h"
 #import "X2RBlogFilter.h"
 #import "NSString+FontAwesome.h"
 #import "FlatButton.h"
+#import "X2RPostTableController.h"
 
-@interface X2RFiltersTableViewController ()
+@interface X2RFiltersTableController ()
 
 @end
 
-@implementation X2RFiltersTableViewController
+@implementation X2RFiltersTableController
 {
     int currentPage;
     X2RPageViewController *pageController;
@@ -138,7 +139,11 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     //Flat button height + margins
-    return 80;
+    return 70;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
 }
 
 -(void)flatBtnPressed:(id)button{
@@ -156,15 +161,31 @@
         }
     }*/
     //[button sendActionsForControlEvents:UIControlEventTouchCancel];
+    //int index = [filters indexOfObject:button];
+    
+    
+    
+    UITableViewCell *cell = (UITableViewCell*)[[[button superview] superview] superview];
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+    
+    X2RBlogFilter *selectedFilter = [filters objectAtIndex:indexPath.row];
     
     //Swap to central view
-    int pageToSwap = 1;
-    UIViewController *viewToSwap = [pageController.pages objectAtIndex:pageToSwap];
+    int viewToSwapIndex = 1;
+    UINavigationController *viewToSwapNavController = [pageController.pages objectAtIndex:viewToSwapIndex];
+    
+    X2RPostTableController *postTableController = viewToSwapNavController.viewControllers[0];
+    //Reload table if selected filted is not the active filter
+    if( ![blog.activeFilter isEqual:selectedFilter] ){
+        blog.activeFilter = selectedFilter;
+        blog.currentPage = 1;
+        [postTableController loadFeed:YES];
+    }
     //Perform slide
     UIPageControl *control = pageController.pageControl;
-    [pageController.pageController setViewControllers:@[viewToSwap] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:^(BOOL completed){
+    [pageController.pageController setViewControllers:@[viewToSwapNavController] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:^(BOOL completed){
         //Change circle color
-        [control setCurrentPage:pageToSwap];
+        [control setCurrentPage:viewToSwapIndex];
     }];
 }
 

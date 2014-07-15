@@ -6,17 +6,17 @@
 //  Copyright (c) 2014 josex2r. All rights reserved.
 //
 
-#import "X2RPostTableViewController.h"
+#import "X2RPostTableController.h"
 #import "X2RBlog.h"
 #import "X2RBlogFilter.h"
 #import "X2RPost.h"
 #import "X2RXMLPullParser.h"
 
-@interface X2RPostTableViewController ()
+@interface X2RPostTableController ()
 
 @end
 
-@implementation X2RPostTableViewController
+@implementation X2RPostTableController
 {
     X2RBlog *blog;
 }
@@ -39,29 +39,7 @@
     
     blog = [X2RBlog sharedBlog];
     
-    NSString *allPostsFeedUrlString = ((X2RBlogFilter*)[blog.filters objectAtIndex:0]).feedUrl;
-    NSURL *allPostFeedUrl = [NSURL URLWithString:allPostsFeedUrlString];
-    
-    X2RXMLPullParser *parser = [[X2RXMLPullParser alloc] initWithContentsOfURL:allPostFeedUrl andCompletionBlock:^(NSMutableArray *posts) {
-        [self.postList addObjectsFromArray:posts];
-        
-        [self test];
-        //[self.tableView reloadData];
-    }];
-    
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [parser parse];
-    });
-    
-    
-}
-
--(void)test{
-    NSLog(@"Number of RSS posts: %d", [self.postList count]);
-    for(X2RPost *post in self.postList){
-        NSLog(@"%@", post.title);
-    }
-    [self.tableView reloadData];
+    [self loadFeed:YES];
 }
 
 - (void)didReceiveMemoryWarning
@@ -133,7 +111,43 @@
         }
     }
     
+    //Load more posts if scroll reached -3 index row
+    if( indexPath.row>=[self.postList count]-3 && !blog.isLoading ){
+        blog.currentPage++;
+        //Load more without clean the list
+        [self performSelectorInBackground:@selector(loadFeed:) withObject:NO];
+    }
+    
     return cell;
+}
+
+-(void) loadFeed:(BOOL)cleanTable{
+    if( cleanTable ){
+        self.navigationItem.title = blog.activeFilter.name;
+        self.postList = [[NSMutableArray alloc] init];
+    }
+    
+    blog.isLoading = YES;
+    
+    NSString *finalFeedUrl = [NSString stringWithFormat:@"%@?paged=%d", blog.activeFilter.feedUrl, blog.currentPage];
+    NSURL *allPostFeedUrl = [NSURL URLWithString:finalFeedUrl];
+    
+    X2RXMLPullParser *parser = [[X2RXMLPullParser alloc] initWithContentsOfURL:allPostFeedUrl andCompletionBlock:^(NSMutableArray *posts) {
+        [self.postList addObjectsFromArray:posts];
+        /*
+        for(X2RPost *post in posts){
+            NSLog(@"%@", post.title);
+        }
+        */
+        [self.tableView reloadData];
+        
+        blog.isLoading = NO;
+    }];
+    
+    dispatch_queue_t concurrentQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0);
+    dispatch_async(concurrentQueue, ^{
+        [parser parse];
+    });
 }
 
 @end

@@ -17,9 +17,11 @@
 //Posts collection of X2RSparseArray(map) of X2RSparseArray of list with X2RPost ------
 @property (strong, nonatomic) X2RSparseArray *posts;
 //Current selected filter
-@property X2RBlogFilter *activeFilter;
+@property (strong, nonatomic) X2RBlogFilter *activeFilter;
 //Current selected page of the selected filter
-@property int currentPage;
+@property (nonatomic) int currentPage;
+//Check if loading
+@property (nonatomic) BOOL isLoading;
 //Filters
 @property (strong, nonatomic) NSArray *filters;
 
@@ -27,5 +29,6 @@
 +(instancetype) sharedBlog;
 
 -(NSArray*) getFiltersByType:(int) type;
+-(X2RBlogFilter*) getFiltersByName:(NSString*) name;
 
 @end

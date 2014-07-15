@@ -14,7 +14,7 @@
 +(int) typeCategory;
 +(int) typeAuthor;
 
-@property (nonatomic) int id;
+@property (nonatomic) int identifier;
 @property (nonatomic) int type;
 @property (copy, nonatomic) NSString *name;
 @property (copy, nonatomic) NSString *feedUrl;
