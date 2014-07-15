@@ -94,14 +94,43 @@
     
     X2RPost *post = [self.postList objectAtIndex:indexPath.row];
     
+    //Get elements
+    UILabel *titleLabel = (UILabel*)[cell.contentView viewWithTag:123654789];
     UIImageView *postImage = (UIImageView*)[cell.contentView viewWithTag:987456321];
+    UIActivityIndicatorView *postLoading = (UIActivityIndicatorView*)[cell.contentView viewWithTag:963852741];
     
     if( post!=nil ){
-        //Text
-        UILabel *titleLabel = (UILabel*)[cell.contentView viewWithTag:123654789];
         titleLabel.text = post.title;
         //Image
-        postImage.image = post.image;
+        if( post.image==nil ){
+            postImage.image = [UIImage imageNamed:@"no_image.jpg"];
+            if( [post.imageLink isEqualToString:@""] ){
+                //Store no_image into post
+                post.image =postImage.image;
+                [postLoading setHidden:YES];
+            }else{
+                //Load image
+                [postLoading startAnimating];
+                [postLoading setHidden:NO];
+                
+                __block NSData *imageData;
+                dispatch_queue_t concurrentQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+                dispatch_async(concurrentQueue, ^{
+                    imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:post.imageLink]];
+                    
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        
+                        post.image = [UIImage imageWithData:imageData];
+                        postImage.image = post.image;
+                        [postLoading stopAnimating];
+                        [postLoading setHidden:YES];
+                    });
+                });
+            }
+        }else{
+            postImage.image = post.image;
+            [postLoading setHidden:YES];
+        }
     }
     
     return cell;

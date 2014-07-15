@@ -14,7 +14,6 @@
     if( [super init]!=nil ){
         _categories = [[NSMutableArray alloc] init];
     }
-    _image = [UIImage imageNamed:@"no_image.jpg"];
     return self;
 }
 
@@ -22,7 +21,6 @@
     if( [super init]!=nil ){
         _title = title;
         _categories = [[NSMutableArray alloc] init];
-        _image = [UIImage imageNamed:@"no_image.jpg"];
     }
     return self;
 }

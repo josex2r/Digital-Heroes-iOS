@@ -90,7 +90,7 @@
         lastPost.guid = currGuid;
         lastPost.creator = currCreator;
         lastPost.categories = [NSMutableArray arrayWithObject:currCategory];
-        lastPost.imageLink = currImage;
+        lastPost.imageLink = [currImage stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
         
         [postList addObject:lastPost];
     }
