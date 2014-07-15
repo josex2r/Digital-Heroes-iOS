@@ -93,23 +93,42 @@
         
     }
    
+    FlatButton *iconFilter = ((FlatButton*)[cell.contentView viewWithTag:987654321]);
     FlatButton *btnFilter = ((FlatButton*)[cell.contentView viewWithTag:123456789]);
     if( btnFilter==nil ){
-        NSLog(@"btnFilter==nil");
-        btnFilter = [[FlatButton alloc] initWithFrame:CGRectMake(10, 10, 300, 50) withBackgroundColor:[UIColor greenColor]];
-        btnFilter.layer.cornerRadius = 10;
+        //Icon button
+        iconFilter = [[FlatButton alloc] initWithFrame:CGRectMake(10, 10, 65, 60) withBackgroundColor:[UIColor greenColor]];
+        iconFilter.layer.cornerRadius = 2;
+        iconFilter.tag = 987654321;
+        [iconFilter addTarget:self action:@selector(flatBtnPressed:) forControlEvents:UIControlEventTouchUpInside];
+        [cell.contentView addSubview:iconFilter];
+        
+        //Text button
+        btnFilter = [[FlatButton alloc] initWithFrame:CGRectMake(70, 10, 240, 60) withBackgroundColor:[UIColor greenColor]];
+        btnFilter.layer.cornerRadius = 2;
+        btnFilter.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
         btnFilter.tag = 123456789;
         [btnFilter addTarget:self action:@selector(flatBtnPressed:) forControlEvents:UIControlEventTouchUpInside];
-        
         [cell.contentView addSubview:btnFilter];
     }
     
+    //Get current filter
     X2RBlogFilter *filter = [filters objectAtIndex:indexPath.row];
     
+    //Set icon
+    [iconFilter setTitle:filter.icon forState:UIControlStateNormal];
+    [iconFilter setFont:[UIFont fontWithName:kFontAwesomeFamilyName size:25]];
+    [iconFilter setBackgroundColor:filter.color];
+    
+    //Set text
     [btnFilter setTitle:filter.name forState:UIControlStateNormal];
     [btnFilter setBackgroundColor:filter.color];
     
     return cell;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 80;
 }
 
 -(void)flatBtnPressed:(id)button{
