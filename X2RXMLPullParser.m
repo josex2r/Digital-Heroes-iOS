@@ -83,7 +83,9 @@
             postList = [[NSMutableArray alloc] init];
         }
         
-        lastPost.link = currLink;
+        NSString *parsedLink = [[currLink stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+        
+        lastPost.link = parsedLink;
         lastPost.description = currDescription;
         lastPost.date = currDate;
         lastPost.title = currTitle;
