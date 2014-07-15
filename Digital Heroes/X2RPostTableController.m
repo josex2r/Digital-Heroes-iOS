@@ -11,6 +11,7 @@
 #import "X2RBlogFilter.h"
 #import "X2RPost.h"
 #import "X2RXMLPullParser.h"
+#import "X2RPageViewController.h"
 
 @interface X2RPostTableController ()
 
@@ -19,6 +20,8 @@
 @implementation X2RPostTableController
 {
     X2RBlog *blog;
+    int currentPage;
+    X2RPageViewController *pageController;
 }
 
 
@@ -36,10 +39,21 @@
     [super viewDidLoad];
 
     self.postList = [[NSMutableArray alloc] init];
-    
+    //Get blog
     blog = [X2RBlog sharedBlog];
-    
+    //Load posts
     [self loadFeed:YES];
+    
+    pageController = ((X2RPageViewController*)[self.tabBarController.viewControllers objectAtIndex:0]);
+    currentPage = [pageController.pages indexOfObject:self.navigationController];
+    
+    //Add left arrow
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"ic_left_arrow"] style:UIBarButtonItemStylePlain target:self action:@selector(navItemPressed:)];
+    [self.navigationItem.leftBarButtonItem setTintColor:[UIColor whiteColor]];
+    
+    //Add right arrow
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"ic_right_arrow"] style:UIBarButtonItemStylePlain target:self action:@selector(navItemPressed:)];
+    [self.navigationItem.rightBarButtonItem setTintColor:[UIColor whiteColor]];
 }
 
 - (void)didReceiveMemoryWarning
@@ -124,30 +138,51 @@
 -(void) loadFeed:(BOOL)cleanTable{
     if( cleanTable ){
         self.navigationItem.title = blog.activeFilter.name;
-        self.postList = [[NSMutableArray alloc] init];
+        [self.postList removeAllObjects];
+        [self.tableView reloadData];
     }
     
     blog.isLoading = YES;
     
-    NSString *finalFeedUrl = [NSString stringWithFormat:@"%@?paged=%d", blog.activeFilter.feedUrl, blog.currentPage];
-    NSURL *allPostFeedUrl = [NSURL URLWithString:finalFeedUrl];
-    
-    X2RXMLPullParser *parser = [[X2RXMLPullParser alloc] initWithContentsOfURL:allPostFeedUrl andCompletionBlock:^(NSMutableArray *posts) {
-        [self.postList addObjectsFromArray:posts];
-        /*
-        for(X2RPost *post in posts){
-            NSLog(@"%@", post.title);
-        }
-        */
-        [self.tableView reloadData];
-        
-        blog.isLoading = NO;
-    }];
-    
     dispatch_queue_t concurrentQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0);
     dispatch_async(concurrentQueue, ^{
+        NSString *finalFeedUrl = [NSString stringWithFormat:@"%@?paged=%d", blog.activeFilter.feedUrl, blog.currentPage];
+        NSURL *allPostFeedUrl = [NSURL URLWithString:finalFeedUrl];
+        
+        X2RXMLPullParser *parser = [[X2RXMLPullParser alloc] initWithContentsOfURL:allPostFeedUrl andCompletionBlock:^(NSMutableArray *posts) {
+            //Load post into data source
+            [self.postList addObjectsFromArray:posts];
+            //Reload table
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.tableView reloadData];
+            });
+            
+            blog.isLoading = NO;
+        }];
+        
         [parser parse];
     });
+}
+
+-(void)navItemPressed:(id)button{
+    //Swap to central view
+    int viewToSwapIndex;
+    UINavigationController *viewToSwapNavController;
+    
+    if( button==self.navigationItem.leftBarButtonItem ){
+        //Categories
+        viewToSwapIndex = 0;
+        viewToSwapNavController = [pageController.pages objectAtIndex:viewToSwapIndex];
+        [pageController.pageController setViewControllers:@[viewToSwapNavController] direction:UIPageViewControllerNavigationDirectionReverse animated:YES completion:nil];
+    }else{
+        //Authors
+        viewToSwapIndex = 2;
+        viewToSwapNavController = [pageController.pages objectAtIndex:viewToSwapIndex];
+        [pageController.pageController setViewControllers:@[viewToSwapNavController] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];
+    }
+    //Change circle color
+    UIPageControl *control = pageController.pageControl;
+    [control setCurrentPage:viewToSwapIndex];
 }
 
 @end

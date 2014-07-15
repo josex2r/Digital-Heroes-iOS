@@ -56,10 +56,18 @@
         //Categories
         filters = [blog getFiltersByType:[X2RBlogFilter typeCategory]];
         self.navigationItem.title = @"Categorías";
+        
+        //Add right arrow
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"ic_right_arrow"] style:UIBarButtonItemStylePlain target:self action:@selector(navItemPressed:)];
+        [self.navigationItem.rightBarButtonItem setTintColor:[UIColor whiteColor]];
     }else{
         //Authors
         filters = [blog getFiltersByType:[X2RBlogFilter typeAuthor]];
         self.navigationItem.title = @"Super Héroes";
+        
+        //Add left arrow
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"ic_left_arrow"] style:UIBarButtonItemStylePlain target:self action:@selector(navItemPressed:)];
+        [self.navigationItem.leftBarButtonItem setTintColor:[UIColor whiteColor]];
     }
     
 }
@@ -175,20 +183,37 @@
     UINavigationController *viewToSwapNavController = [pageController.pages objectAtIndex:viewToSwapIndex];
     
     X2RPostTableController *postTableController = viewToSwapNavController.viewControllers[0];
-    //Reload table if selected filted is not the active filter
-    if( ![blog.activeFilter isEqual:selectedFilter] ){
-        blog.activeFilter = selectedFilter;
-        blog.currentPage = 1;
-        [postTableController loadFeed:YES];
-    }
+    
+    __block X2RBlog *blockBlog = blog;
+    
     //Perform slide
     UIPageControl *control = pageController.pageControl;
     [pageController.pageController setViewControllers:@[viewToSwapNavController] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:^(BOOL completed){
         //Change circle color
         [control setCurrentPage:viewToSwapIndex];
+        //Reload table if selected filted is not the active filter
+        if( ![blockBlog.activeFilter isEqual:selectedFilter] ){
+            blockBlog.activeFilter = selectedFilter;
+            blockBlog.currentPage = 1;
+            [postTableController loadFeed:YES];
+        }
     }];
 }
 
-
+-(void)navItemPressed:(id)button{
+    //Swap to central view
+    int viewToSwapIndex = 1;
+    UINavigationController *viewToSwapNavController = [pageController.pages objectAtIndex:viewToSwapIndex];
+    if( currentPage==0 ){
+        //Categories
+        [pageController.pageController setViewControllers:@[viewToSwapNavController] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];
+    }else{
+        //Authors
+        [pageController.pageController setViewControllers:@[viewToSwapNavController] direction:UIPageViewControllerNavigationDirectionReverse animated:YES completion:nil];
+    }
+    //Change circle color
+    UIPageControl *control = pageController.pageControl;
+    [control setCurrentPage:viewToSwapIndex];
+}
 
 @end

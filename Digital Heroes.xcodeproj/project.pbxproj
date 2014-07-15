@@ -35,6 +35,8 @@
 		5392539819757E5F00A0E4C6 /* X2RPostTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5392539719757E5F00A0E4C6 /* X2RPostTableController.m */; };
 		5392539A19759D0F00A0E4C6 /* no_image.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5392539919759D0F00A0E4C6 /* no_image.jpg */; };
 		5392539D1975B09100A0E4C6 /* X2RGenericTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5392539C1975B09100A0E4C6 /* X2RGenericTabBarController.m */; };
+		539253A01975DADB00A0E4C6 /* ic_right_arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 5392539E1975DADB00A0E4C6 /* ic_right_arrow.png */; };
+		539253A11975DADB00A0E4C6 /* ic_left_arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 5392539F1975DADB00A0E4C6 /* ic_left_arrow.png */; };
 		53CA161A195B29BD00EFC500 /* X2RPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53CA1619195B29BD00EFC500 /* X2RPageViewController.m */; };
 		8F7B65EB19685B4B00F70676 /* ic_super_01101.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F7B65DF19685B4B00F70676 /* ic_super_01101.png */; };
 		8F7B65EC19685B4B00F70676 /* ic_super_code.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F7B65E019685B4B00F70676 /* ic_super_code.png */; };
@@ -108,6 +110,8 @@
 		5392539919759D0F00A0E4C6 /* no_image.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = no_image.jpg; sourceTree = "<group>"; };
 		5392539B1975B09100A0E4C6 /* X2RGenericTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = X2RGenericTabBarController.h; sourceTree = "<group>"; };
 		5392539C1975B09100A0E4C6 /* X2RGenericTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = X2RGenericTabBarController.m; sourceTree = "<group>"; };
+		5392539E1975DADB00A0E4C6 /* ic_right_arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_right_arrow.png; sourceTree = "<group>"; };
+		5392539F1975DADB00A0E4C6 /* ic_left_arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_left_arrow.png; sourceTree = "<group>"; };
 		53CA1618195B29BD00EFC500 /* X2RPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = X2RPageViewController.h; sourceTree = "<group>"; };
 		53CA1619195B29BD00EFC500 /* X2RPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = X2RPageViewController.m; sourceTree = "<group>"; };
 		8F7B65DF19685B4B00F70676 /* ic_super_01101.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_super_01101.png; sourceTree = "<group>"; };
@@ -311,6 +315,8 @@
 				8F7B65E719685B4B00F70676 /* ic_super_sem.png */,
 				8F7B65E819685B4B00F70676 /* ic_super_social.png */,
 				8F7B65E919685B4B00F70676 /* ic_super_speed.png */,
+				5392539E1975DADB00A0E4C6 /* ic_right_arrow.png */,
+				5392539F1975DADB00A0E4C6 /* ic_left_arrow.png */,
 				5392539919759D0F00A0E4C6 /* no_image.jpg */,
 				8F7B65EA19685B4B00F70676 /* ic_super_trix.png */,
 			);
@@ -416,6 +422,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				539253A11975DADB00A0E4C6 /* ic_left_arrow.png in Resources */,
 				5391B6E6196BFA2B008E5A86 /* FontAwesome.ttf in Resources */,
 				537397B419064F3B0024B7E0 /* Main_iPad.storyboard in Resources */,
 				537397B919064F3B0024B7E0 /* Images.xcassets in Resources */,
@@ -434,6 +441,7 @@
 				8F7B65F119685B4B00F70676 /* ic_super_pencil.png in Resources */,
 				8F7B65EC19685B4B00F70676 /* ic_super_code.png in Resources */,
 				8F7B65F519685B4B00F70676 /* ic_super_speed.png in Resources */,
+				539253A01975DADB00A0E4C6 /* ic_right_arrow.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -604,7 +612,6 @@
 		537397D019064F3B0024B7E0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Digital Heroes/Digital Heroes-Prefix.pch";
@@ -617,7 +624,6 @@
 		537397D119064F3B0024B7E0 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Digital Heroes/Digital Heroes-Prefix.pch";

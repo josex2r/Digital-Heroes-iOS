@@ -21,7 +21,7 @@
         
         blog.filters = @[
                          //ALL
-                         [[X2RBlogFilter alloc] initWithId:0 andName:@"Todos" andFeedUrl:@"http://blog.gobalo.es/feed/" andType:[X2RBlogFilter typeCategory] andColor:[X2RColors redColor] andIcon:[NSString fontAwesomeIconStringForEnum:FAList]],
+                         [[X2RBlogFilter alloc] initWithId:0 andName:@"Digital Heroes" andFeedUrl:@"http://blog.gobalo.es/feed/" andType:[X2RBlogFilter typeCategory] andColor:[X2RColors redColor] andIcon:[NSString fontAwesomeIconStringForEnum:FAList]],
                          
                          //CATEGORIES
                          [[X2RBlogFilter alloc] initWithId:1 andName:@"Advertising" andFeedUrl:@"http://blog.gobalo.es/category/advertising-2/feed/" andType:[X2RBlogFilter typeCategory] andColor:[X2RColors lightBlueColor] andIcon:[NSString fontAwesomeIconStringForEnum:FAList]],
