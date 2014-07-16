@@ -43,7 +43,7 @@
     //Get blog
     blog = [X2RBlog sharedBlog];
     //Load posts
-    [self loadFeed:YES];
+    [self loadFeedWithFilter:blog.activeFilter andClean:YES];
     
     pageController = ((X2RPageViewController*)[self.tabBarController.viewControllers objectAtIndex:0]);
     currentPage = [pageController.pages indexOfObject:self.navigationController];
@@ -133,14 +133,29 @@
     if( indexPath.row>=[self.postList count]-3 && !blog.isLoading ){
         blog.currentPage++;
         //Load more without clean the list
-        [self performSelectorInBackground:@selector(loadFeed:) withObject:NO];
+        [self performSelectorInBackground:@selector(loadNextPage) withObject:nil];
     }
     
     return cell;
 }
 
--(void) loadFeed:(BOOL)cleanTable{
-    NSArray *cachedPosts = [blog getPostsFromFilter:blog.activeFilter andPage:blog.currentPage];
+-(void) loadNextPage{
+    [self loadFeedWithFilter:blog.activeFilter andClean:NO];
+}
+
+-(void) loadFeedWithFilter:(X2RBlogFilter *)filter andClean:(BOOL)cleanTable{
+    
+    //Check if the web view is opened
+    if( [self.navigationController.childViewControllers count]>1 ){
+        [self.navigationController popToRootViewControllerAnimated:NO];
+    }
+    
+    if( ![blog.activeFilter isEqual:filter] ){
+        blog.currentPage = 1;
+    }
+    
+    //Update blog
+    blog.activeFilter = filter;
     
     if( cleanTable ){
         self.navigationItem.title = blog.activeFilter.name;
@@ -150,16 +165,19 @@
     
     blog.isLoading = YES;
     
-    if( cachedPosts!=nil ){
+    dispatch_queue_t concurrentQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0);
+    dispatch_async(concurrentQueue, ^{
         
-        [self.postList addObjectsFromArray:cachedPosts];
-        [self.tableView reloadData];
-        blog.isLoading = NO;
-        
-    }else{
+        NSArray *cachedPosts = [blog getPostsFromFilter:blog.activeFilter andPage:blog.currentPage];
     
-        dispatch_queue_t concurrentQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0);
-        dispatch_async(concurrentQueue, ^{
+        if( cachedPosts!=nil ){
+        
+            [self.postList addObjectsFromArray:cachedPosts];
+            [self.tableView reloadData];
+            blog.isLoading = NO;
+        
+        }else{
+        
             NSString *finalFeedUrl = [NSString stringWithFormat:@"%@?paged=%d", blog.activeFilter.feedUrl, blog.currentPage];
             NSURL *allPostFeedUrl = [NSURL URLWithString:finalFeedUrl];
         
@@ -176,9 +194,10 @@
             }];
             
             [parser parse];
-        });
         
-    }
+        }
+        
+    });
 }
 
 -(void)navItemPressed:(id)button{

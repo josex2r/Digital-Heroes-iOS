@@ -7,11 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "X2RBlogFilter.h"
 
 @interface X2RPostTableController : UITableViewController <UITableViewDelegate>
 
 @property (strong, nonatomic) NSMutableArray *postList;
 
--(void) loadFeed:(BOOL)cleanTable;
+-(void) loadFeedWithFilter:(X2RBlogFilter*)filter andClean:(BOOL)cleanTable;
 
 @end

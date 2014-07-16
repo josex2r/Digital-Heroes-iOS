@@ -11,6 +11,7 @@
 #import "X2RBlog.h"
 #import "X2RBlogFilter.h"
 #import "NSString+FontAwesome.h"
+#import "FAImageView.h"
 #import "X2RPostTableController.h"
 
 @interface X2RFiltersTableController ()
@@ -131,7 +132,8 @@
         [cell.contentView addSubview:btnFilter];
     }
     
-    //Set icon
+    //Set ico
+    NSLog(@"%hhd", [filter.icon hasPrefix:@"\\uf"]);
     if( currentPage==0 ){
         //Categories
         [iconFilter setTitle:filter.icon forState:UIControlStateNormal];
@@ -189,19 +191,13 @@
     
     X2RPostTableController *postTableController = viewToSwapNavController.viewControllers[0];
     
-    __block X2RBlog *blockBlog = blog;
-    
     //Perform slide
     UIPageControl *control = pageController.pageControl;
     [pageController.pageController setViewControllers:@[viewToSwapNavController] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:^(BOOL completed){
         //Change circle color
         [control setCurrentPage:viewToSwapIndex];
-        //Reload table if selected filted is not the active filter
-        if( ![blockBlog.activeFilter isEqual:selectedFilter] ){
-            blockBlog.activeFilter = selectedFilter;
-            blockBlog.currentPage = 1;
-            [postTableController loadFeed:YES];
-        }
+        //Reload table if needed
+        [postTableController loadFeedWithFilter:selectedFilter andClean:YES];
     }];
 }
 

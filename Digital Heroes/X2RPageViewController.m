@@ -29,27 +29,27 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    //Set view pages
+    //Set view pages (categories, posts, authors)
     self.pages = @[
                [self.storyboard instantiateViewControllerWithIdentifier:@"BlogFilters"],
                [self.storyboard instantiateViewControllerWithIdentifier:@"BlogPosts"],
                [self.storyboard instantiateViewControllerWithIdentifier:@"BlogFilters"]
                ];
-    
+    //Init pager view
     self.pageController = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal options:nil];
     //Initialize datasource and delegate
     self.pageController.dataSource = self;
     self.pageController.delegate = self;
-    
+    //Set pager bounds
     [[self.pageController view] setFrame:[[self view] bounds]];
-    
+    //Set view pager current page
     self.currentIndex = 1;
     NSArray *viewControllers = [NSArray arrayWithObjects:[self.pages objectAtIndex:1], nil];
-    
     [self.pageControl setNumberOfPages:[self.pages count]];
     [self.pageControl setCurrentPage:1];
+    //Set selector to handle page change event
     [self.pageControl addTarget:self action:@selector(changePage:) forControlEvents:UIControlEventValueChanged];
-    
+    //Set view pager controllers
     [self.pageController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
     
     [self addChildViewController:self.pageController];
