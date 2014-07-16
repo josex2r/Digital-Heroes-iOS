@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface X2RGenericTabBarController : UITabBarController
+@interface X2RGenericTabBarController : UITabBarController <UITabBarControllerDelegate>
 
 @end

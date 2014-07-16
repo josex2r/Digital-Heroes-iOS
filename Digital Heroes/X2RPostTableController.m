@@ -15,18 +15,18 @@
 #import "X2RWebViewController.h"
 #import "UIFont+FontAwesome.h"
 #import "X2RColors.h"
+#import "X2RGenericNavigationController.h"
 
 @interface X2RPostTableController ()
 
 @end
 
+static X2RBlog *blog;
+
 @implementation X2RPostTableController
 {
-    X2RBlog *blog;
     int currentPage;
-    int currentTab;
     X2RPageViewController *pageController;
-    X2RBlogFilter *lastFilterSelected;
 }
 
 
@@ -44,19 +44,15 @@
     [super viewDidLoad];
 
     self.postList = [[NSMutableArray alloc] init];
+    
     //Get blog
-    blog = [X2RBlog sharedBlog];
-    
-    //Set TabBar delegate
-    self.tabBarController.delegate = self;
-    
-    //Load posts
-    lastFilterSelected = blog.activeFilter;
-    [self loadFeedWithFilter:blog.activeFilter andClean:YES];
-    
-    //Only add arrows if first tab is selected
-    currentTab =  0;
-    if( [self.navigationItem.title isEqualToString:@"Digital Heroes"] ){
+    if( blog==nil ){
+        blog = [X2RBlog sharedBlog];
+        
+        //Load posts
+        [self loadFeedWithFilter:blog.activeFilter andClean:YES];
+        
+        //Get controllers
         pageController = ((X2RPageViewController*)[self.tabBarController.viewControllers objectAtIndex:0]);
         currentPage = [pageController.pages indexOfObject:self.navigationController];
         
@@ -67,6 +63,8 @@
         //Add right arrow
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"ic_right_arrow"] style:UIBarButtonItemStylePlain target:self action:@selector(navItemPressed:)];
         [self.navigationItem.rightBarButtonItem setTintColor:[UIColor whiteColor]];
+    }else{
+        //Initializing favourites tab
     }
 }
 
@@ -190,7 +188,7 @@
     
     //Clean the table if requested
     if( cleanTable ){
-        self.navigationItem.title = blog.activeFilter.name;
+        self.navigationItem.title = filter.name;
         [self.postList removeAllObjects];
         [self.tableView reloadData];
     }
@@ -210,15 +208,13 @@
             blog.isLoading = NO;
         
         }else{
-            //copy filter to prevent save post in another filter (is async man)!
-            X2RBlogFilter *currentFilter = [[X2RBlogFilter alloc] initWithId:blog.activeFilter.identifier andName:blog.activeFilter.name andFeedUrl:blog.activeFilter.feedUrl andType:blog.activeFilter.type andColor:blog.activeFilter.color andIcon:blog.activeFilter.icon isFontAwesome:blog.activeFilter.fontAwesome];
             
             //Load feed from RSS
-            NSString *finalFeedUrl = [NSString stringWithFormat:@"%@?paged=%d", currentFilter.feedUrl, blog.currentPage];
+            NSString *finalFeedUrl = [NSString stringWithFormat:@"%@?paged=%d", filter.feedUrl, blog.currentPage];
             NSURL *allPostFeedUrl = [NSURL URLWithString:finalFeedUrl];
         
             X2RXMLPullParser *parser = [[X2RXMLPullParser alloc] initWithContentsOfURL:allPostFeedUrl andCompletionBlock:^(NSMutableArray *posts) {
-                [blog pushPosts:posts intoFilter:currentFilter andPage:blog.currentPage];
+                [blog pushPosts:posts intoFilter:filter andPage:blog.currentPage];
                 //Load post into data source
                 [self.postList addObjectsFromArray:posts];
                 //Reload table
@@ -316,21 +312,6 @@
     [blog.dbHelper addFavourite:webView.post];
     
     [self.navigationController pushViewController:webView animated:YES];
-}
-
--(void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController{
-    int index = [tabBarController.childViewControllers indexOfObject:viewController];
-    
-    currentTab = index;
-    
-    if( index==1 ){
-        lastFilterSelected = blog.activeFilter;
-        //Last object is Favourites
-        blog.activeFilter = [blog.filters lastObject];
-    }else{
-        blog.activeFilter = lastFilterSelected;
-        lastFilterSelected = [blog.filters lastObject];
-    }
 }
 
 @end

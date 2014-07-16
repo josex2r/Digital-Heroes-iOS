@@ -36,8 +36,6 @@
 
 -(NSMutableArray*)getPostsFromFilter:(X2RBlogFilter *)filter andPage:(int)page;
 
--(void)removePostFromFavourites:(X2RPost*)post;
-
 -(void)pushPosts:(NSArray*) posts
       intoFilter:(X2RBlogFilter*) filter
          andPage:(int) page;

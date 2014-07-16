@@ -102,15 +102,6 @@
     return  nil;
 }
 
--(void)removePostFromFavourites:(X2RPost *)post{
-    NSMutableArray *favourites = [self getPostsFromFilter:[self.filters lastObject] andPage:1];
-    for (int i=0; i<[favourites count]; i++) {
-        if( [post.title isEqualToString:((X2RPost*)[favourites objectAtIndex:i]).title] ){
-            [favourites removeObjectAtIndex:i];
-        }
-    }
-}
-
 -(void)loadFavouritesFromDB{
     if( self.dbHelper==nil ){
         self.dbHelper = [[X2RSQLiteHelper alloc] init];
@@ -142,13 +133,24 @@
 }
 
 -(BOOL)addFavourite:(X2RPost *)post{
+    NSMutableArray *favourites = [self getPostsFromFilter:[self.filters lastObject] andPage:1];
+    [favourites addObject:post];
+    
     [self.dbHelper addFavourite:post];
     
     return YES;
 }
 
 -(BOOL)removeFavourite:(X2RPost *)post{
-    [self removePostFromFavourites:post];
+    
+    NSMutableArray *favourites = [self getPostsFromFilter:[self.filters lastObject] andPage:1];
+    for (int i=0; i<[favourites count]; i++) {
+        if( [post.title isEqualToString:((X2RPost*)[favourites objectAtIndex:i]).title] ){
+            NSLog(@"FOUND!!!!!!!");
+            [favourites removeObjectAtIndex:i];
+        }
+    }
+    
     [self.dbHelper removeFavourite:post];
     
     return YES;
