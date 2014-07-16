@@ -38,14 +38,14 @@
     currElement = elementName;
     
     if( [elementName isEqualToString:@"item"] ){
-        currTitle = [[NSMutableString alloc] init];
-        currDescription = [[NSMutableString alloc] init];
-        currLink = [[NSMutableString alloc] init];
-        currDate = [[NSMutableString alloc] init];
-        currGuid = [[NSMutableString alloc] init];
-        currCreator = [[NSMutableString alloc] init];
-        currCategory = [[NSMutableString alloc] init];
-        currImage = [[NSMutableString alloc] init];
+        currTitle = [[NSMutableString alloc] initWithString:@""];
+        currDescription = [[NSMutableString alloc] initWithString:@""];
+        currLink = [[NSMutableString alloc] initWithString:@""];
+        currDate = [[NSMutableString alloc] initWithString:@""];
+        currGuid = [[NSMutableString alloc] initWithString:@""];
+        currCreator = [[NSMutableString alloc] initWithString:@""];
+        currCategory = [[NSMutableString alloc] initWithString:@""];
+        currImage = [[NSMutableString alloc] initWithString:@""];
         
         lastPost = [[X2RPost alloc] init];
     }
