@@ -42,6 +42,12 @@
     self.postList = [[NSMutableArray alloc] init];
     //Get blog
     blog = [X2RBlog sharedBlog];
+    
+    //Check if favourites tab
+    if( self.tabBarController.selectedIndex==1 ){
+        blog.activeFilter = [blog.filters lastObject];
+    }
+    
     //Load posts
     [self loadFeedWithFilter:blog.activeFilter andClean:YES];
     
@@ -258,6 +264,8 @@
     X2RWebViewController *webView = [self.storyboard instantiateViewControllerWithIdentifier:@"ShowPost"];
     
     webView.post = [self.postList objectAtIndex:indexPath.row];
+    
+    [blog.dbHelper addFavourite:webView.post];
     
     [self.navigationController pushViewController:webView animated:YES];
 }

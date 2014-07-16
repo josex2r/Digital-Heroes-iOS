@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "X2RBlogFilter.h"
+#import "X2RSQLiteHelper.h"
 
 @interface X2RBlog : NSObject
 //Singleton pattern
@@ -23,6 +24,8 @@
 @property (nonatomic) BOOL isLoading;
 //Filters
 @property (strong, nonatomic) NSArray *filters;
+//DB
+@property (strong, nonatomic) X2RSQLiteHelper *dbHelper;
 
 //Get the instance method
 +(instancetype) sharedBlog;
@@ -36,5 +39,7 @@
 -(void)pushPosts:(NSArray*) posts
       intoFilter:(X2RBlogFilter*) filter
          andPage:(int) page;
+
+-(void)loadFavouritesFromDB;
 
 @end

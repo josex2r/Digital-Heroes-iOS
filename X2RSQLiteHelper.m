@@ -16,26 +16,6 @@
 
 @synthesize databasePath;
 
-+(NSMutableArray *)execute:(NSString *)sentence isSelect:(BOOL)isSelect{
-    NSMutableArray *favouritesList = [[NSMutableArray alloc] init];
-    
-    static sqlite3 *db;
-    sqlite3_stmt *stmt;
-    const char *next;
-    
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentPath = [paths objectAtIndex:0];
-    //NSString *path = [documentPath stringByAppendingString:dbName];
-    
-    //if( sqlite3_open([path UTF8String], &db) ){
-        
-        
-        
-    //}
-    
-    return favouritesList;
-}
-
 - (void) initDatabase {
     
     // Get the documents directory
@@ -59,11 +39,11 @@
             NSString *sql_stmt = @"CREATE TABLE IF NOT EXISTS favourites (";
             sql_stmt = [sql_stmt stringByAppendingString:@"title TEXT, "];
             sql_stmt = [sql_stmt stringByAppendingString:@"link TEXT, "];
-            sql_stmt = [sql_stmt stringByAppendingString:@"comments TEXT)"];
-            sql_stmt = [sql_stmt stringByAppendingString:@"date TEXT)"];
-            sql_stmt = [sql_stmt stringByAppendingString:@"creator TEXT)"];
-            sql_stmt = [sql_stmt stringByAppendingString:@"guid TEXT)"];
-            sql_stmt = [sql_stmt stringByAppendingString:@"description TEXT)"];
+            sql_stmt = [sql_stmt stringByAppendingString:@"comments TEXT, "];
+            sql_stmt = [sql_stmt stringByAppendingString:@"date TEXT, "];
+            sql_stmt = [sql_stmt stringByAppendingString:@"creator TEXT, "];
+            sql_stmt = [sql_stmt stringByAppendingString:@"guid TEXT, "];
+            sql_stmt = [sql_stmt stringByAppendingString:@"description TEXT, "];
             sql_stmt = [sql_stmt stringByAppendingString:@"imageLink TEXT)"];
             
             if (sqlite3_exec(mySqliteDB, [sql_stmt UTF8String], NULL, NULL, &errMsg) != SQLITE_OK)
@@ -87,16 +67,34 @@
 //save our data
 - (BOOL) addFavourite:(X2RPost*)post
 {
+    
+    NSLog(@"Trying to add favourite: %@", post.title);
+    
     BOOL success = false;
     sqlite3_stmt *statement = NULL;
     const char *dbpath = [databasePath UTF8String];
     
     if (sqlite3_open(dbpath, &mySqliteDB) == SQLITE_OK)
     {
-        NSString *insertSQL = [NSString stringWithFormat:@"INSERT INTO favourites (title, link, comments, date, creator, guid, description, imageLink) VALUES (\"%@\", \"%@\", \"%@\", \"%@\", \"%@\", \"%@\", \"%@\", \"%@\")", post.title, post.link, post.comments, post.date, post.creator, post.guid, post.description, post.imageLink];
-            
+        /*NSString *insertSQL = [NSString stringWithFormat:@"INSERT INTO favourites (title, link, comments, date, creator, guid, description, imageLink) VALUES (\"%@\", \"%@\", \"%@\", \"%@\", \"%@\", \"%@\", \"%@\", \"%@\")", post.title, post.link, post.comments, post.date, post.creator, post.guid, post.description, post.imageLink];
+         
         const char *insert_stmt = [insertSQL UTF8String];
-        sqlite3_prepare_v2(mySqliteDB, insert_stmt, -1, &statement, NULL);
+        NSLog(@"%s", insert_stmt);*/
+        
+        const char *insert_stmt = "INSERT INTO favourites (title, link, comments, date, creator, guid, description, imageLink) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        
+        int test = sqlite3_prepare_v2(mySqliteDB, insert_stmt, -1, &statement, NULL);
+        NSLog(@"%@", mySqliteDB);
+        NSLog(@"%d",test);
+        sqlite3_bind_text(statement, 1, [post.title UTF8String], [post.title length], 0);
+        sqlite3_bind_text(statement, 2, [post.link UTF8String], [post.link length], 0);
+        sqlite3_bind_text(statement, 3, [post.comments UTF8String], [post.comments length], 0);
+        sqlite3_bind_text(statement, 4, [post.date UTF8String], [post.date length], 0);
+        sqlite3_bind_text(statement, 5, [post.creator UTF8String], [post.creator length], 0);
+        sqlite3_bind_text(statement, 6, [post.guid UTF8String], [post.guid length], 0);
+        sqlite3_bind_text(statement, 7, [post.description UTF8String], [post.description length], 0);
+        sqlite3_bind_text(statement, 8, [post.imageLink UTF8String], [post.imageLink length], 0);
+        NSLog(@"%d",sqlite3_step(statement) );
         if (sqlite3_step(statement) == SQLITE_DONE)
         {
             success = true;
@@ -104,6 +102,8 @@
         
         sqlite3_finalize(statement);
         sqlite3_close(mySqliteDB);
+        
+        NSLog(@"Resultado %hhd", success);
     
     }
     
@@ -111,6 +111,9 @@
 }
 
 -(BOOL)removeFavourite:(X2RPost *)post{
+    
+    NSLog(@"Trying to remove favourite: %@", post.title);
+    
     BOOL success = false;
     sqlite3_stmt *statement = NULL;
     const char *dbpath = [databasePath UTF8String];
@@ -129,6 +132,8 @@
         
         sqlite3_finalize(statement);
         sqlite3_close(mySqliteDB);
+        
+        NSLog(@"Resultado %hhd", success);
         
     }
     

@@ -11,15 +11,11 @@
 
 @interface X2RSQLiteHelper : NSObject
 
-+(NSMutableArray*) execute:(NSString*) sentence
-                  isSelect:(BOOL) isSelect;
-
 @property (nonatomic, strong) NSString *databasePath;
 
 - (void) initDatabase;
 - (BOOL) addFavourite:(X2RPost*) post;
 - (BOOL) removeFavourite:(X2RPost*) post;
-- (BOOL) toggleFavourite:(X2RPost*) post;
 - (NSMutableArray*) getFavourites;
 
 @end

@@ -60,6 +60,8 @@
         blog.currentPage = 1;
         blog.isLoading = NO;
         blog.posts = [[NSMutableDictionary alloc] init];
+        
+        [blog loadFavouritesFromDB];
     });
     
     return blog;
@@ -98,6 +100,26 @@
         }
     }
     return  nil;
+}
+
+-(void)loadFavouritesFromDB{
+    if( self.dbHelper==nil ){
+        self.dbHelper = [[X2RSQLiteHelper alloc] init];
+        [self.dbHelper initDatabase];
+    }
+    
+    X2RBlogFilter *favouritesFilter = [self.filters lastObject];
+    
+    NSArray *favourites = [self getPostsFromFilter:favouritesFilter andPage:1];
+    
+    if( [favourites count]<1 ){
+        favourites = [self.dbHelper getFavourites];
+    
+        [self pushPosts:favourites intoFilter:favouritesFilter andPage:1];
+    
+    }
+    
+    NSLog(@"Se han cargado %lu favoritos", (unsigned long)[favourites count]);
 }
 
 @end
